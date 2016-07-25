@@ -2,11 +2,11 @@ import webapp2
 import jinja2
 import os
 
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
-
 from google.appengine.ext import ndb
 from google.appengine.api import users
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
 class Books(ndb.Model):
     name = ndb.StringProperty()
@@ -38,6 +38,8 @@ class ApiStuffHandler(webapp2.RequestHandler):
 
 class SignInHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+
         template= jinja_environment.get_template('book.html')
         self.response.out.write(template.render())
 
@@ -46,4 +48,5 @@ app = webapp2.WSGIApplication([
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
     ('/signin', SignInHandler),
+    ('/apistuff', ApiStuffHandler),
 ], debug=True)
