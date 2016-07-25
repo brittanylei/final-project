@@ -58,7 +58,7 @@ class SignInHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
-        template= jinja_environment.get_template('book.html')
+        template= jinja_environment.get_template('sign-in.html')
         self.response.out.write(template.render())
 
 app = webapp2.WSGIApplication([
