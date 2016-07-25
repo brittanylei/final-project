@@ -17,21 +17,46 @@
 import webapp2
 import jinja2
 import os
+<<<<<<< HEAD
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
+=======
+from google.appengine.ext import ndb
+from google.appengine.api import users
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
+class Books(ndb.Model):
+    name = ndb.StringProperty()
+    description = ndb.StringProperty()
+    genre = ndb.StringProperty()
+    author = ndb.StringProperty()
+    date_published = ndb.DateTimeProperty()
+    ISBN = ndb.IntegerProperty()
+>>>>>>> f5d7ebc81686d71a7a591f913d836aa7e1b4d2e1
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        template = jinja_environment.get_template('new.html')
+        self.response.out.write(template.render())
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
         template= jinja_environment.get_template('results.html')
         self.response.out.write(template.render())
 
+class BookHandler(webapp2.RequestHandler):
+    def get(self):
+        template= jinja_environment.get_template('book.html')
+        self.response.out.write(template.render())
+
+
+
+
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/results', ResultsHandler)
 ], debug=True)
