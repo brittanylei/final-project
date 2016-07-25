@@ -31,7 +31,6 @@ class Books(ndb.Model):
     date_published = ndb.DateTimeProperty()
     ISBN = ndb.IntegerProperty()
 
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -49,11 +48,13 @@ class BookHandler(webapp2.RequestHandler):
 
 class SignInHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+
         template= jinja_environment.get_template('book.html')
         self.response.out.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
-    ('/signin', )
+    ('/signin', SignInHandler )
 ], debug=True)
