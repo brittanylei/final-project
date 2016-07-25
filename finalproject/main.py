@@ -26,6 +26,12 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
+class ResultsHandler(webapp2.RequestHandler):
+    def get(self):
+        template= jinja_environment.get_template('results.html')
+        self.response.out.write(template.render())
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
