@@ -46,6 +46,14 @@ class BookHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('book.html')
         self.response.out.write(template.render())
 
+<<<<<<< HEAD
+class ApiStuffHandler(webapp2.RequestHandler):
+    def get(self):
+        template= jinja_environment.get_template('apistuff.html')
+        self.response.out.write(template.render())
+
+
+=======
 class SignInHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -56,5 +64,8 @@ class SignInHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
+<<<<<<< HEAD
     ('/signin', SignInHandler )
+
+    ('/apistuff', ApiStuffHandler)
 ], debug=True)
