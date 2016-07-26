@@ -1,0 +1,75 @@
+body {
+  background-image: url("http://www.planwallpaper.com/static/images/Light-Wood-Background-Wallpaper.jpg");
+}
+
+#heading img {
+  height: auto;
+  margin-bottom: -7px;
+  width: 100%;
+}
+
+.content{
+  background-color: #99ffcc;
+  margin:5%;
+}
+
+.content p{
+  margin: 5%;
+  padding-bottom: 3%;
+}
+
+#wrapper {
+min-height:100%;
+position:relative;
+}
+
+footer{
+display: block;
+background-color: white;
+width: 100%;
+text-align: center;
+padding-top: 5px;
+padding-bottom: 5px;
+position:absolute;
+bottom:0;
+left:0;
+}
+
+ul.tab {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #cc6699;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #bf4080;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #d98cb3;}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  height: auto;
+  width: 100%;
+}
