@@ -22,6 +22,11 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('new.html')
         self.response.out.write(template.render())
 
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('home.html')
+        self.response.out.write(template.render())
+
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
         template= jinja_environment.get_template('results.html')
@@ -59,11 +64,20 @@ class PracticeHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('practice.html')
         self.response.out.write(template.render())
 
+class MyBooksHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('mybooks.html')
+        self.response.out.write(template.render())
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/home', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
     ('/signin', SignInHandler),
+    ('/mybooks', MyBooksHandler),
     ('/practice', PracticeHandler),
 ], debug=True)
