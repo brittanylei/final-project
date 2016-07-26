@@ -13,6 +13,7 @@
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         console.log(JSON.parse(httpRequest.responseText));
+        document.write(httpRequest.response.Text);
 
       } else {
     // still not ready
