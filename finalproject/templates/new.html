@@ -35,14 +35,33 @@
         console.log(items);
 
         for (var i =0; i < items.length; i++) {
-          alert(items[i].saleInfo.country);
-          alert(items[i].volumeInfo.title);
+          console.log(items[i].saleInfo.country);
+          console.log(items[i].volumeInfo.title);
+          console.log(items[i].volumeInfo.publishedDate);
+          console.log(items[i].volumeInfo.printType);
+          console.log(items[i].volumeInfo.language);
+          console.log(items[i].volumeInfo.authors);
+
+        // Problem - this for loop only works if the "authors" array exists in items[i]
+        //            if it doesn't, the loop returns an error.
+        // Solution - condition could be : if authors exists (?)
+        
+        // for (var a=0; a< items[i].volumeInfo.authors.length ; a++) {
+        //   if (items[i].volumeInfo.authors[a]){
+        //     alert(items[i].volumeInfo.authors[a]);
+        //   }
+        //   else {
+        //     console.log("No author");
+        //   }
+        // }
+ -->
+        //  console.log(items[i];
 
 
 
           //for (var a = 0; a < items[i].saleInfo.length ; i++){
-            //alert(items[i].saleInfo.country);
-          //alert();
+            //console.log(items[i].saleInfo.country);
+          //console.log();
           //}
 
 
