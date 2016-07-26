@@ -9,6 +9,7 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
+
 class Books(ndb.Model):
     name = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -54,8 +55,19 @@ class SignInHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
-        template= jinja_environment.get_template('sign-in.html')
-        self.response.out.write(template.render())
+        email = user.email()
+
+        if user:
+            logout_url = users.CreateLogoutURL('/')
+            template = jinja_environment.get_template('sign-in.html')
+            template_values = {'email':email, 'logout_url':logout_url}
+
+            self.response.out.write(template.render(template_values))
+
+        else:
+            login_url = users.CreateLoginURL('/')
+            self.response.write('Logging Out')
+
 
 class PracticeHandler(webapp2.RequestHandler):
     def get(self):
