@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.santancharterschool.com/cbelt/wp-content/uploads/sites/16/2014/04/books.jpg" />
+      </div>
+      <ul class="tab">
+        <li><a href="/home" class="tablinks" >Home</a></li>
+        <li><a href="/results" class="tablinks" >Results</a></li>
+        <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notelist" class="tablinks" >Notes</a></li>
+        <li><a href="/signin" class="tablinks" >Sign-in</a></li>
+      </ul>
+      <h2> Notes </h2>
+      <form action="/notelist" method="post">
+        <input name="book" placeholder="Book title goes here"><br>
+        <textarea name="quote" placeholder="Enter quote"></textarea><br>
+        <button>Add</button>
+        <br>
+      </form>
+      {% for note in notes %}
+        <div id="note">
+          <h2>
+            <a href="{{note.url()}}">
+              <section id="content">{{note.quote}}</section>
+            </a>
+          </h2>
+
+          <div class="date">{{note.date}}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <br>
+
+
+  </body>
+  <br>
+  <br>
+  <div id ="wrapper">
+  <footer>
+
+  <p>This code is brought to you in part by the CSSI 2016 in MTV. Thanks to all the Google employees, interns, and TAs who made this site possible.</p>
+
+</footer>
+</div>
+</html>
