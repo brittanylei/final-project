@@ -21,11 +21,17 @@
       </ul>
 
       <p>This is the home page. It can have description about our goals and stuff.</p>
-      <form action="/" method="post">
-      <h2>What book do you want to find?</h2>
-      <input type="text" name = "message">
-      <input type = "submit" value="Submit">
-    </form>
+      <form id="form" onsubmit="return false;">
+        <h2>What book do you want to find?</h2>
+    <input type="text" id="userInput" />
+    <input type="submit" onclick="getbook();" />
+</form>
+<script>
+function getbook() {
+    var input = document.getElementById("userInput").value;
+    console.log(input);
+}
+</script>
   </div>
   <br>
   <br>
