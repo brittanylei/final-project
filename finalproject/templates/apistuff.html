@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <p>La la la i hate murgers</p>
@@ -16,11 +17,18 @@
     // still not ready
       }
     }
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=Huckleberry', true);
+    var my_search = "Pride and Prejudice";
+    var my_search_list = my_search.split(" ");
+    my_search = "";
+    for (var i = 0; i < my_search_list.length; i++){
+      my_search = my_search + '+' + my_search_list[i];
+    }
+    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
     httpRequest.send(null);
     httpRequest.onreadystatechange = nameOfTheFunction;
 
 
     </script>
+
   </body>
 </html>
