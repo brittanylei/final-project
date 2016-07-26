@@ -3,7 +3,7 @@ p{
 }
 
 body {
-  background-image: url("http://www.planwallpaper.com/static/images/Light-Wood-Background-Wallpaper.jpg");
+  background-image: url("http://snobscoffee.co.za/psd/image/data/Fullscreen%20Background%20Slides/snobs.jpg");
 }
 
 #heading img {
@@ -23,14 +23,16 @@ body {
 }
 
 .content{
-  background-color: #99ffcc;
+  background-color: #B28F4F;
   margin:5%;
 }
 
-.content p{
+.content p, h2{
   margin: 5%;
   padding-bottom: 3%;
   font-family: Palatino;
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 #wrapper {
@@ -55,8 +57,7 @@ ul.tab {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #cc6699;
+  background-color: #644C37;
 }
 
 /* Float the list items side by side */
@@ -65,7 +66,8 @@ ul.tab li {float: left;}
 /* Style the links inside the list items */
 ul.tab li a {
   display: inline-block;
-  color: black;
+  color: white;
+  text-shadow: 1px 1px 2px black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -75,16 +77,15 @@ ul.tab li a {
 }
 
 /* Change background color of links on hover */
-ul.tab li a:hover {background-color: #bf4080;}
+ul.tab li a:hover {background-color: #503c2c;}
 
 /* Create an active/current tablink class */
-ul.tab li a:focus, .active {background-color: #d98cb3;}
+ul.tab li a:focus, .active {background-color: #836f5e;}
 
 /* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
   border-top: none;
   height: auto;
   width: 100%;

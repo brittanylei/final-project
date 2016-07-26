@@ -4,111 +4,16 @@
     <meta charset="utf-8">
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/carousel.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <style>
-    body {
-  background: #333;
-  padding: 70px 0;
-  font: 15px/20px Arial, sans-serif;
-}
 
-.container {
-  margin: 0 auto;
-  width: 200px;
-  height: 200px;
-  position: relative;
-  perspective: 1000px;
-}
-
-.carousel {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
-.item {
-  display: block;
-  position: absolute;
-  background: #000;
-  width: 150px;
-  height: 200px;
-  line-height: 200px;
-  font-size: 5em;
-  text-align: center;
-  color: #FFF;
-  opacity: 0.95;
-  border-radius: 10px;
-}
-
-.a {
-  transform: rotateY(0deg) translateZ(250px);
-  background: #ed1c24;
-}
-.b {
-  transform: rotateY(40deg) translateZ(250px);
-  background: #0072bc;
-}
-.c {
-  transform: rotateY(80deg) translateZ(250px);
-  background: #39b54a;
-}
-.d {
-  transform: rotateY(120deg) translateZ(250px);
-  background: #f26522;
-}
-.e {
-  transform: rotateY(160deg) translateZ(250px);
-  background: #630460;
-}
-.f {
-  transform: rotateY(200deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.g {
-  transform: rotateY(240deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.h {
-  transform: rotateY(280deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.i {
-  transform: rotateY(320deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.next, .prev {
-  color: #444;
-  position: absolute;
-  top: 700px;
-  margin-left:100px;
-  margin-right:100px;
-  padding: 1em 2em;
-  cursor: pointer;
-  background: #CCC;
-  border-radius: 5px;
-  border-top: 1px solid #FFF;
-  box-shadow: 0 5px 0 #999;
-  transition: box-shadow 0.1s, top 0.1s;
-}
-.next:hover, .prev:hover { color: #000; }
-.next:active, .prev:active {
-  top: 704px;
-  box-shadow: 0 1px 0 #999;
-}
-.next { right: 5em; }
-.prev { left: 5em; }
     </style>
 
     <div class = content>
       <div id = heading>
-        <img onload="this.style.opacity='1';" src="http://www.santancharterschool.com/cbelt/wp-content/uploads/sites/16/2014/04/books.jpg" />
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
       </div>
       <ul class="tab">
         <li><a href="/home" class="tablinks" >Home</a></li>
@@ -119,6 +24,9 @@
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
+      <br>
+      <br>
+      <br>
       <br>
       <div class="container">
         <div class="carousel">
@@ -133,9 +41,9 @@
       <img class ="item i" src="https://wendyvancamp.files.wordpress.com/2012/04/alice-in-wonderland-book-cover.jpg" height="200px"width="125px">
     </div>
     </div>
-    <div class="next">Next</div>
-    <div class="prev">Prev</div>
-      <p>Welcome to LGM. This comprehansive book catalog accesses exclusively free books for you to enjoy. If the book you want is not free, use the map function to easily access Try a search below or access one of the suggested books here.</p>
+    <div class="next"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+    <div class="prev"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+      <p>Welcome to The Chubby Cups. This comprehansive book catalog accesses exclusively free books for you to enjoy. If the book you want is not free, use the map function to easily access Try a search below or access one of the suggested books here.</p>
       <form id="form" onsubmit="return false;">
         <h2>What book do you want to find?</h2>
     <input type="text" id="userInput" />
