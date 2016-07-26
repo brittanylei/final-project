@@ -15,7 +15,7 @@
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         console.log(JSON.parse(httpRequest.responseText));
-
+        document.write(httpRequest.responseText);
       } else {
     // still not ready
       }
