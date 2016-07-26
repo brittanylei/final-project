@@ -10,6 +10,8 @@ body {
   height: auto;
   margin-bottom: -7px;
   width: 100%;
+  opacity:0;
+  transition: opacity 10s;
 }
 
 .content{
