@@ -122,7 +122,7 @@ class NoteListHandler(webapp2.RequestHandler):
         note.put()
 
         # 3. Render response
-        self.redirect('/notelist')
+        self.redirect('/notes')
 
 
 class NotesHandler(webapp2.RequestHandler):
