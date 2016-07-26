@@ -14,6 +14,14 @@ body {
   transition: opacity 10s;
 }
 
+#bookpic .item{
+  margin: 3px;
+}
+
+#bookpic .item img{
+  display: block;
+}
+
 .content{
   background-color: #99ffcc;
   margin:5%;
