@@ -1,3 +1,7 @@
+p{
+  font-family: Palatino;
+}
+
 body {
   background-image: url("http://www.planwallpaper.com/static/images/Light-Wood-Background-Wallpaper.jpg");
 }
@@ -16,6 +20,7 @@ body {
 .content p{
   margin: 5%;
   padding-bottom: 3%;
+  font-family: Palatino;
 }
 
 #wrapper {
@@ -56,6 +61,7 @@ ul.tab li a {
   text-decoration: none;
   transition: 0.3s;
   font-size: 17px;
+  font-family: Palatino;
 }
 
 /* Change background color of links on hover */
