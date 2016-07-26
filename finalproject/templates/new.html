@@ -32,7 +32,14 @@
     // still not ready
       }
     }
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=Huckleberry&filter=free-ebooks', true);
+    var my_search = "Pride and Prejudice";
+    var my_search_list = my_search.split(" ");
+    my_search = "";
+    for (var i = 0; i < my_search_list.length; i++){
+      my_search = my_search + '+' + my_search_list[i];
+    }
+    my_search = my_search + "&filter=free-ebooks"
+    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
     httpRequest.send(null);
     httpRequest.onreadystatechange = nameOfTheFunction;
 
