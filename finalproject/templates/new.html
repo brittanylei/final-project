@@ -27,7 +27,7 @@
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         console.log(JSON.parse(httpRequest.responseText));
-        document.write(httpRequest.responseText);
+        document.write(httpRequest.responseText); // this is a string of dictionaries
       } else {
     // still not ready
       }
