@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+import logging
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
@@ -33,6 +34,14 @@ class BookHandler(webapp2.RequestHandler):
 
 class ApiStuffHandler(webapp2.RequestHandler):
     def get(self):
+
+        #url = "https://www.googleapis.com/books/v1/volumes?q=" + API_KEY
+        #results = urlfetch.fetch(url)
+
+        #result_dic = json.parse(result.content)
+        #logging.info(results_info(items))
+
+        #template_values = {}
         template= jinja_environment.get_template('apistuff.html')
         self.response.out.write(template.render())
 
@@ -43,10 +52,18 @@ class SignInHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('book.html')
         self.response.out.write(template.render())
 
+class PracticeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('practice.html')
+        self.response.out.write(template.render())
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
     ('/signin', SignInHandler),
-    ('/apistuff', ApiStuffHandler),
+    ('/practice', PracticeHandler),
 ], debug=True)
