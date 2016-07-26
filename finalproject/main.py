@@ -78,6 +78,13 @@ class AboutUsHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('aboutus.html')
         self.response.out.write(template.render())
 
+class NotesHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('notes.html')
+        self.response.out.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/home', HomeHandler),
@@ -86,5 +93,6 @@ app = webapp2.WSGIApplication([
     ('/signin', SignInHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
+    ('/notes', NotesHandler),
     ('/practice', PracticeHandler),
 ], debug=True)
