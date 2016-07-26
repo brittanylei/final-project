@@ -25,12 +25,32 @@
     </div>
     <script type="text/javascript">
     var httpRequest = new XMLHttpRequest();
+
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         console.log(JSON.parse(httpRequest.responseText));
-        document.write(httpRequest.responseText); // this is a string of dictionaries
-      } else {
+
+        var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
+
+        console.log(items);
+
+        for (var i =0; i < items.length; i++) {
+          alert(items[i].saleInfo.country);
+          alert(items[i].volumeInfo.title);
+
+
+
+          //for (var a = 0; a < items[i].saleInfo.length ; i++){
+            //alert(items[i].saleInfo.country);
+          //alert();
+          //}
+
+
+         // this is a string of dictionaries
+      }
+    //  else {
     // still not ready
+      //    }
       }
     }
     var my_search = "Pride and Prejudice";
