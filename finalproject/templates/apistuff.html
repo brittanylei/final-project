@@ -27,6 +27,7 @@
     for (var i = 0; i < my_search_list.length; i++){
       my_search = my_search + '+' + my_search_list[i];
     }
+    my_search = my_search + "&filter=free-ebooks"
     httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
     httpRequest.send(null);
     httpRequest.onreadystatechange = nameOfTheFunction;

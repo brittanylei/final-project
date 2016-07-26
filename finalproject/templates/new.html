@@ -32,7 +32,7 @@
     // still not ready
       }
     }
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=Huckleberry', true);
+    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=Huckleberry&filter=free-ebooks', true);
     httpRequest.send(null);
     httpRequest.onreadystatechange = nameOfTheFunction;
 
