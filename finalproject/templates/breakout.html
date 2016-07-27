@@ -17,16 +17,17 @@
       $.getJSON(queryUrl, displayResults);
     }
     function displayResults(json){
-
       var results = $('#results');
       var items = json.items;
       results.html('');
 
       for (var i = 0; i < items.length; i++){
         var item = items[i];
+        console.log(item);
         var info = item.volumeInfo;
-        if(!item.authors){
-          item.authors=[];
+        var access = item.accessInfo;
+        if(!info.authors){
+          info.authors= "Unknown";
         }
         if (!info.previewLink){
           info.previewLink = "";
@@ -37,12 +38,10 @@
         var title = info.title;
         var authors = info.authors;
         var thumbnail = info.imageLinks.thumbnail;
-        var previewLink = info.previewLink;
+        var webLink = access.webReaderLink;
         var id = item.id;
         results.append(
-          $('<a href="/book?id=" + id + target="_blank"><img src="' + thumbnail + '"></a>'),
-          $('<h2>' + title + '</h2>'),
-          $('<h3>' + authors + '</h3>')
+          $('<section class="indibook"><div class="bookimage"><a href="' + webLink + '" target="_blank"><img src="' + thumbnail + '"></a></div><div class="booktext"><h2>' + title + '</h2><h3>' + authors + '</h3></div></section>')
       );
       }
     }
@@ -69,9 +68,11 @@
       <button id="searchButton">Search</button>
       <br>
       <br>
-      <div id="results">
-
-      </div>
+      <section>
+          <div id="results">
+            <br>
+          </div>
+      </section>
       <p></p>
     </div>
 
