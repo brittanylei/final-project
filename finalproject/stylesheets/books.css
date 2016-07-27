@@ -2,6 +2,20 @@ p{
   font-family: Palatino;
 }
 
+.content p{
+  font-size: 20px;
+}
+
+#signout {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+}
+
+footer p{
+  font-size: 16px;
+}
+
 body {
   background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
 }
