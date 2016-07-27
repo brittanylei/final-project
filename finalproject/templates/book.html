@@ -14,8 +14,6 @@
         var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
         console.log(items);
 
-
-
         for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
           var item = items[i]               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
@@ -41,49 +39,29 @@
           var hard_cover_id = v_inf.industryIdentifiers;
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
-
-          //The if loop will assign the displayed image to the largest image avaialable
-          var image = ""
-          if (v_inf.imageLinks.extraLarge){
-            image = v_inf.imageLinks.extraLarge;
-          }
-          else if (v_inf.imageLinks.large){
-            image = v_inf.imageLinks.large;
-          }
-          else if (v_inf.imageLinks.medium){
-            image = v_inf.imageLinks.medium;
-          }
-          else if(v_inf.imageLinks.small){
-            image = v_inf.imageLinks.small;
-          }
-          else if(v_inf.imageLinks.thumbnail){
-            image = v_inf.imageLinks.thumbnail;
-          }
-          var categories =
-
-
+          var image = v_inf.imageLinks.thumbnail;
 
           //section for the books information.
           var header = document.createElement("h2"); // title + authors
           var header_text = document.createTextNode(title + " written by " + authors);
-          head1.appendChild(header_text);
+          header.appendChild(header_text);
 
           var para = document.createElement("p");
           var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
-          para1.appendChild(paraText)
+          para.appendChild(paraText)
 
           var read_link = document.createElement("a");
           read_link.href = v_inf.previewLink; //find better web reader to use
           link_text = document.createTextNode("Read Here"); //
           read_link.appendChild(link_text);
 
-          var image = document.createElement("img")
-          image.src = image;
+          var picture = document.createElement("img")
+          picture.src = image;
 
           specific_book.appendChild(header);
-          specific_book.appendChild(image);
+          specific_book.appendChild(picture);
           specific_book.appendChild(para);
-          specific_book.appendChild(read_link)
+          specific_book.appendChild(read_link);
 
     //   else {
     // still not ready
@@ -111,7 +89,7 @@
       </div>
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
-          <li><a href="/breakout" class="tablinks" >Search</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
         <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
@@ -120,10 +98,10 @@
         <li><a href="/new" class="tablinks" >New</a></li>
       </ul>
 
-      <p>hello {{info}}</p>
+      <p id = "specific_book"></p>
     </div>
     <br>
-    <p></p>
+
 
 
 
