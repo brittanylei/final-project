@@ -9,10 +9,7 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 63bfc435df57fa346c12459abf98adef4f5c6ed5
 class Books(ndb.Model):
     name = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -33,10 +30,6 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 63bfc435df57fa346c12459abf98adef4f5c6ed5
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -58,8 +51,25 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(template_values))
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('home.html')
-        self.response.out.write(template.render())
+        user = users.get_current_user()
+
+        email = user.email()
+
+        if user:
+            logout_url = users.CreateLogoutURL('/')
+            template = jinja_environment.get_template('home.html')
+            template1 = jinja_environment.get_template('sign-out.html')
+            template_values = {'email':email, 'logout_url':logout_url}
+            self.response.out.write(template.render() + template1.render(template_values))
+        elif self.request.path == '/home':
+            template = jinja_environment.get_template('home.html')
+            self.response.write(template.render())
+        else:
+        #     login_url = users.CreateLoginURL('/')
+        #     template = jinja_environment.get_template('sign-in.html')
+        #     template_values = {login_url':login_url}
+            template = jinja_environment.get_template('home.html')
+            self.response.out.write(template.render())
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
@@ -86,22 +96,23 @@ class ApiStuffHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('apistuff.html')
         self.response.out.write(template.render())
 
-class SignInHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        email = user.email()
-
-        if user:
-            logout_url = users.CreateLogoutURL('/')
-            template = jinja_environment.get_template('sign-in.html')
-            template_values = {'email':email, 'logout_url':logout_url}
-
-            self.response.out.write(template.render(template_values))
-
-        else:
-            login_url = users.CreateLoginURL('/')
-            self.response.write('Logging Out')
+# class SignInHandler(webapp2.RequestHandler):
+#     def get(self):
+#         user = users.get_current_user()
+#
+#         email = user.email()
+#
+#         if user:
+#             logout_url = users.CreateLogoutURL('/')
+#             template = jinja_environment.get_template('sign-in.html')
+#             template_values = {'email':email, 'logout_url':logout_url}
+#
+#             self.response.out.write(template.render(template_values))
+#         else:
+#             login_url = users.CreateLoginURL('/')
+#             template = jinja_environment.get_template('sign-in.html')
+#             template_values = {login_url':login_url}
+#             self.response.out.write(template.render(template_values))
 
 class PracticeHandler(webapp2.RequestHandler):
     def get(self):
@@ -112,8 +123,6 @@ class PracticeHandler(webapp2.RequestHandler):
 
 class MyBooksHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-
         template= jinja_environment.get_template('mybooks.html')
         self.response.out.write(template.render())
 
@@ -190,7 +199,7 @@ app = webapp2.WSGIApplication([
     ('/home', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
-    ('/signin', SignInHandler),
+    # ('/signin', SignInHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
     ('/notes', NoteListHandler),
