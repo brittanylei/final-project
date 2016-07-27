@@ -189,6 +189,6 @@ app = webapp2.WSGIApplication([
     ('/notes', NoteListHandler),
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
-    ('/book', BookHandler)
+    ('/book', BookHandler),
     ('/breakout', BreakOutHandler),
 ], debug=True)
