@@ -77,8 +77,7 @@ class ResultsHandler(webapp2.RequestHandler):
 class BookHandler(webapp2.RequestHandler):
     def get(self):
         id = self.request.get('id')
-        logging.info("the id is " + id)
-        template_values = {'info':id}
+        template_values = {'id':id}
         template= jinja_environment.get_template('book.html')
         self.response.out.write(template.render(template_values))
 
@@ -203,5 +202,5 @@ app = webapp2.WSGIApplication([
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
-    ('/breakout', BreakOutHandler),
+    ('/breakout', BreakOutHandler)
 ], debug=True)
