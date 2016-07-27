@@ -39,8 +39,10 @@
         var thumbnail = info.imageLinks.thumbnail;
         var previewLink = info.previewLink;
         var id = item.id;
+        console.log(item)
+
         results.append(
-          $('<a href="/book?id=" + id + target="_blank"><img src="' + thumbnail + '"></a>'),
+          $('<a href="/book?id="' + id + 'target="_blank"><img src="' + thumbnail + '"></a>'),
           $('<h2>' + title + '</h2>'),
           $('<h3>' + authors + '</h3>')
       );
