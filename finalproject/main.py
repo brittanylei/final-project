@@ -53,23 +53,22 @@ class HomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
-        email = user.email()
-
         if user:
+            email = user.email()
             logout_url = users.CreateLogoutURL('/')
             template = jinja_environment.get_template('home.html')
             template1 = jinja_environment.get_template('sign-out.html')
             template_values = {'email':email, 'logout_url':logout_url}
             self.response.out.write(template.render() + template1.render(template_values))
-        elif self.request.path == '/home':
+        elif self.request.path == 'home':
             template = jinja_environment.get_template('home.html')
             self.response.write(template.render())
         else:
-        #     login_url = users.CreateLoginURL('/')
-        #     template = jinja_environment.get_template('sign-in.html')
-        #     template_values = {login_url':login_url}
+            login_url = users.CreateLoginURL('/')
+            template = jinja_environment.get_template('sign-in.html')
+            template_values = {'login_url':login_url}
             template = jinja_environment.get_template('home.html')
-            self.response.out.write(template.render())
+            self.response.out.write(template.render(template_values))
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
@@ -146,7 +145,7 @@ class NoteListHandler(webapp2.RequestHandler):
 
     def post(self):
         # 1. Get the info from the request.
-        note = self.request.get('note')
+        quote = self.request.get('quote')
 
         # 2. Logic (interact w database)
         note = Note(quote=quote)
