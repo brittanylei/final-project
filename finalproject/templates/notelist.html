@@ -20,12 +20,28 @@
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
+      <h2> Notes </h2>
+      <form action="/notelist" method="post">
+        <input name="book" placeholder="Book title goes here"><br>
+        <textarea name="quote" placeholder="Enter quote"></textarea><br>
+        <button>Add</button>
+        <br>
+      </form>
+      {% for note in notes %}
+        <div id="note">
+          <h2>
+            <a href="{{note.url()}}">
+              <section id="content">{{note.quote}}</section>
+            </a>
+          </h2>
 
-      <p>This is the page about all of us</p>
-      <p>Should we list our names in alpha order?</p>
-      <p>I think that we should incude some kind of photo here as well </p>
+          <div class="date">{{note.date}}</div>
+        </div>
+      {% endfor %}
     </div>
     <br>
+
+
   </body>
   <br>
   <br>

@@ -9,7 +9,7 @@
 
     <div class = content>
       <div id = heading>
-        <img onload="this.style.opacity='1';" src="http://www.santancharterschool.com/cbelt/wp-content/uploads/sites/16/2014/04/books.jpg" />
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
       </div>
       <ul class="tab">
         <li><a href="/home" class="tablinks" >Home</a></li>
@@ -20,8 +20,18 @@
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
-
-      <p>This is the notes page</p>
+        <em id="quotedis">{{note.quote}}</em><br>
+        <div class="date">{{note.date}}</div>
+        <br>
+        Thoughts?
+        <form action="{{note.url()}}" method="post">
+          <textarea name="comment"></textarea><br>
+          <button>Submit</button>
+        </form>
+        <br>
+        {% for comment in comments %}
+          <p>{{comment.text}}</p>
+        {% endfor%}
     </div>
     <br>
   </body>

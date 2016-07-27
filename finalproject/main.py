@@ -9,6 +9,30 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
+<<<<<<< HEAD
+=======
+
+class Books(ndb.Model):
+    name = ndb.StringProperty()
+    description = ndb.StringProperty()
+    genre = ndb.StringProperty()
+    author = ndb.StringProperty()
+    date_published = ndb.DateTimeProperty()
+    ISBN = ndb.IntegerProperty()
+
+class Note(ndb.Model):
+    quote = ndb.StringProperty()
+    date = ndb.DateTimeProperty(auto_now_add=True)
+
+    def url(self):
+        return '/note?key=' + self.key.urlsafe()
+
+class Comment(ndb.Model):
+    text = ndb.StringProperty()
+    date = ndb.DateTimeProperty(auto_now_add=True)
+    note_key = ndb.KeyProperty(kind=Note)
+
+>>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -96,11 +120,65 @@ class AboutUsHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('aboutus.html')
         self.response.out.write(template.render())
 
+class NoteListHandler(webapp2.RequestHandler):
+    def get(self):
+        # 1. Get the info from the request.
+        # 2. Logic (interact w database)
+        notes = Note.query().fetch()
+
+        # 3. Render response
+        template_values = {'notes':notes}
+        template = jinja_environment.get_template('notelist.html')
+        self.response.write(template.render(template_values))
+
+    def post(self):
+        # 1. Get the info from the request.
+        note = self.request.get('note')
+
+        # 2. Logic (interact w database)
+        note = Note(quote=quote)
+        note.put()
+
+        # 3. Render response
+        self.redirect('/notes')
+
+
 class NotesHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+        # 1. Get the info from the request.
+        urlsafe_key = self.request.get('key')
 
-        template= jinja_environment.get_template('notes.html')
+        # 2. Logic (interact w database)
+        key = ndb.Key(urlsafe=urlsafe_key)
+        note = key.get()
+        comments = Comment.query(Comment.note_key == note.key).order(-Comment.date).fetch()
+
+        # 3. Render response
+        template_values = {'note':note, 'comments':comments}
+        template = jinja_environment.get_template('note.html')
+        self.response.write(template.render(template_values))
+
+    def post(self):
+        # 1. Get the info from the request.
+        text = self.request.get('comment')
+        note_key_urlsafe = self.request.get('key')
+        # 2. Logic (interact w database)
+        note_key = ndb.Key(urlsafe=note_key_urlsafe)
+        note = note_key.get()
+
+        comment = Comment(text=text, note_key=note.key)
+        comment.put()
+        # 3. Render response
+        self.redirect(note.url())
+
+
+
+class BreakOutHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('breakout.html')
         self.response.out.write(template.render())
 
 app = webapp2.WSGIApplication([
@@ -111,7 +189,12 @@ app = webapp2.WSGIApplication([
     ('/signin', SignInHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
-    ('/notes', NotesHandler),
+    ('/notes', NoteListHandler),
+    ('/note', NotesHandler),
     ('/practice', PracticeHandler),
+<<<<<<< HEAD
     ('/book', BookHandler)
+=======
+    ('/breakout', BreakOutHandler),
+>>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 ], debug=True)

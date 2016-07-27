@@ -7,12 +7,6 @@
   </head>
   <body>
     <style>
-    body {
-  background: #333;
-  padding: 70px 0;
-  font: 15px/20px Arial, sans-serif;
-}
-
 .container {
   margin: 0 auto;
   width: 200px;
@@ -84,23 +78,20 @@
 }
 
 .next, .prev {
-  color: #444;
+  /*color: #444;*/
   position: absolute;
   top: 700px;
   margin-left:100px;
   margin-right:100px;
   padding: 1em 2em;
   cursor: pointer;
-  background: #CCC;
-  border-radius: 5px;
-  border-top: 1px solid #FFF;
-  box-shadow: 0 5px 0 #999;
   transition: box-shadow 0.1s, top 0.1s;
+}
+.next{
+  transform: rotateY(180deg);
 }
 .next:hover, .prev:hover { color: #000; }
 .next:active, .prev:active {
-  top: 704px;
-  box-shadow: 0 1px 0 #999;
 }
 .next { right: 5em; }
 .prev { left: 5em; }
@@ -108,7 +99,7 @@
 
     <div class = content>
       <div id = heading>
-        <img onload="this.style.opacity='1';" src="http://www.santancharterschool.com/cbelt/wp-content/uploads/sites/16/2014/04/books.jpg" />
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
       </div>
       <ul class="tab">
         <li><a href="/home" class="tablinks" >Home</a></li>
@@ -120,22 +111,25 @@
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
       <br>
+      <br>
+      <br>
+      <br>
       <div class="container">
         <div class="carousel">
-      <img class ="item a" src="https://images-na.ssl-images-amazon.com/images/I/41TzDrc0sTL._SY344_BO1,204,203,200_.jpg" height="200px" width="125px">
-      <img class ="item b" src="https://rarebookschool.org/2005/exhibitions/eyreapparent/img/charlotte_big.jpg" height="200px"width="125px">
-      <img class ="item c" src="http://www.publicbookshelf.com/images/PridePrejudice423x630.jpg" height="200px"width="125px">
-      <img class ="item d" src="http://images.contentreserve.com/ImageType-100/1785-1/%7BDE015914-262B-40A7-AB34-205FFB5C8776%7DImg100.jpg" height="200px"width="125px">
-      <img class ="item e" src="https://cdn.pastemagazine.com/www/articles/2012/12/18/les_miserables_book.jpg" height="200px"width="125px">
-      <img class ="item f" src="https://thegrownupya.files.wordpress.com/2012/02/peter-pan-jm-barrie-2.jpg" height="200px"width="125px">
-      <img class ="item g" src="https://portal.somersfield.bm/Sam/images/BookCover.jpg" height="200px"width="125px">
-      <img class ="item h" src="https://images-na.ssl-images-amazon.com/images/I/41tCJMRu1OL.jpg" height="200px"width="125px">
-      <img class ="item i" src="https://wendyvancamp.files.wordpress.com/2012/04/alice-in-wonderland-book-cover.jpg" height="200px"width="125px">
+      <a href="https://books.google.com/books?id=w9A98UIGNMAC&printsec=frontcover&dq=portrait+of+dorian+gray&hl=en&sa=X&ved=0ahUKEwjanseCmZLOAhVI9mMKHazaB-UQ6AEIHDAA#v=onepage&q&f=false"><img class ="item a" src="https://images-na.ssl-images-amazon.com/images/I/41TzDrc0sTL._SY344_BO1,204,203,200_.jpg"></a>
+      <a href="https://books.google.com/books?id=lSMGAAAAQAAJ&printsec=frontcover&dq=jane+eyre&hl=en&sa=X&ved=0ahUKEwiK87aSnJLOAhUN02MKHS36CTIQ6AEIHDAA#v=onepage&q&f=false"><img class ="item b" src="https://rarebookschool.org/2005/exhibitions/eyreapparent/img/charlotte_big.jpg"></a>
+      <a href="https://books.google.com/books?id=E1kVAAAAYAAJ&printsec=frontcover&dq=pride+and+prejudice&hl=en&sa=X&ved=0ahUKEwi72s3PnJLOAhVBS2MKHZ30CHkQ6AEIKDAC#v=onepage&q&f=false"><img class ="item c" src="http://www.publicbookshelf.com/images/PridePrejudice423x630.jpg" ></a>
+      <a href="https://books.google.com/books?id=7bU4AAAAMAAJ&printsec=frontcover&dq=adventures+of+huckleberry+finn&hl=en&sa=X&sqi=2&pjf=1&ved=0ahUKEwjdn7PsnZLOAhUM6mMKHTomD_gQ6AEIHDAA#v=onepage&q&f=false"><img class ="item d" src="http://images.contentreserve.com/ImageType-100/1785-1/%7BDE015914-262B-40A7-AB34-205FFB5C8776%7DImg100.jpg"></a>
+      <a href=""><img class ="item e" src="https://cdn.pastemagazine.com/www/articles/2012/12/18/les_miserables_book.jpg"></a>
+      <a href=""><img class ="item f" src="https://thegrownupya.files.wordpress.com/2012/02/peter-pan-jm-barrie-2.jpg"></a>
+      <a href=""><img class ="item g" src="https://portal.somersfield.bm/Sam/images/BookCover.jpg"></a>
+      <a href=""><img class ="item h" src="https://images-na.ssl-images-amazon.com/images/I/41tCJMRu1OL.jpg" height="200px"width="125px"></a>
+      <a href""><img class ="item i" src="https://wendyvancamp.files.wordpress.com/2012/04/alice-in-wonderland-book-cover.jpg"></a>
     </div>
     </div>
-    <div class="next">Next</div>
-    <div class="prev">Prev</div>
-      <p>Welcome to LGM. This comprehansive book catalog accesses exclusively free books for you to enjoy. If the book you want is not free, use the map function to easily access Try a search below or access one of the suggested books here.</p>
+    <div class="next"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+    <div class="prev"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+      <p>Welcome to The Chubby Cups. This comprehansive book catalog accesses exclusively free books for you to enjoy. If the book you want is not free, use the map function to easily access Try a search below or access one of the suggested books here.</p>
       <form id="form" onsubmit="return false;">
         <h2>What book do you want to find?</h2>
     <input type="text" id="userInput" />

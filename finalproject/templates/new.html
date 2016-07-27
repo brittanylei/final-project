@@ -8,7 +8,7 @@
   <body>
     <div class = content>
       <div id = heading>
-        <img onload="this.style.opacity='1';" src="http://www.santancharterschool.com/cbelt/wp-content/uploads/sites/16/2014/04/books.jpg" />
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
       </div>
       <ul class="tab">
         <li><a href="/home" class="tablinks" >Home</a></li>
@@ -46,6 +46,23 @@
           var id = items[i].id;
           console.log("This is the book # "+ (i+1))
 
+<<<<<<< HEAD
+=======
+        // Problem - this for loop only works if the "authors" array exists in items[i]
+        //            if it doesn't, the loop returns an error.
+        // Solution - condition could be : if authors exists (?)
+
+        // for (var a=0; a< items[i].volumeInfo.authors.length ; a++) {
+        //   if (items[i].volumeInfo.authors[a]){
+        //     alert(items[i].volumeInfo.authors[a]);
+        //   }
+        //   else {
+        //     console.log("No author");
+        //   }
+        // }
+ -->
+        //  console.log(items[i];
+>>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 
           var book = document.createElement("a");
           console.log("test1");
