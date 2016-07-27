@@ -6,65 +6,12 @@
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <script type="text/javascript">
-    var httpRequest = new XMLHttpRequest();
-
-    function nameOfTheFunction() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
-        console.log(items);
-
-        for (var i =0; i < items.length; i++) {
-          var v_inf = items[i].volumeInfo;
-
-          var title =v_inf.title;
-          var date = v_inf.publishedDate;
-          var language = v_inf.language;
-          var authors = v_inf.authors;
-          //var description = v_inf.desciption;
-          var id = items[i].id;
-          var hard_cover_id = v_inf.industryIdentifiers;
-
-          var head1 = document.createElement("h1");
-          var head1_text = document.createTextNode(title + " written by " + authors);
-          head1.appendChild(head1_text);
-
-          var para1 = document.createElement("p");
-          var p_text = document.createTextNode(date + " " + hard_cover_id + " " + v_inf.pageCount + " " + v_inf.printType.toLowerCase() + " "   );
-          para1.appendChild(p_text)
-
-          var image = document.createElement("img")
-          image.src = v_inf.imageLinks.thumbnail;
-          specific_book.appendChild(image);
-          specific_book.appendChild(head1);
-          specific_book.appendChild(para1);
-
-          document.createElement("br");
-
-    //   else {
-    // still not ready
-    //       } ends else
-        }// ends for loop
-      } // ends if loop
-    } // ends function
-    var my_search = "{{id}}"; //this is will be the id at the top
-    var my_search_list = my_search.split(" ");
-    my_search = "";
-    for (var i = 0; i < my_search_list.length; i++){
-      my_search = my_search + '+' + my_search_list[i];
-    }
-    my_search = my_search + "&filter=free-ebooks";
-    httpRequest.onreadystatechange = nameOfTheFunction;
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
-    httpRequest.send(null);
-
-    </script>
-
-
 
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+          <h1>The Chubby Cups</h1>
+        <h2>The Chubby Cups</h2>
       </div>
       <ul class="tab">
         <li><a href="/home" class="tablinks" >Home</a></li>
@@ -75,10 +22,12 @@
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
-      <div id="specific_book">
-      </div>
+
+      <p>hello {{info}}</p>
     </div>
     <br>
+    <p></p>
+
 
 
 

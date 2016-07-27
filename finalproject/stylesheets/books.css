@@ -6,18 +6,26 @@ body {
   background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
 }
 
+#heading{
+  background-image: url("http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg");
+}
+
 #heading img {
   height: auto;
   margin-bottom: -7px;
   width: 100%;
   opacity:0;
-  transition: opacity 10s;
+  transition: opacity 5s;
 }
-#heading h2 {
+#heading h1 {
    position: absolute;
-   top: 200px;
-   left: 0;
+   left:500px;
+   top:200px;
    width: 100%;
+   font-family: Palatino;
+   color: #F1F1D4;
+   text-shadow: 2px 2px 4px black;
+   font-size: 50px;
 }
 
 #bookpic .item{
@@ -246,7 +254,7 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 
 em {
   color: white;
-  margin-left: 25px; 
+  margin-left: 25px;
 }
 
 #content {
