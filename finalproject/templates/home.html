@@ -6,104 +6,14 @@
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <style>
-.container {
-  margin: 0 auto;
-  width: 200px;
-  height: 200px;
-  position: relative;
-  perspective: 1000px;
-}
-
-.carousel {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
-.item {
-  display: block;
-  position: absolute;
-  background: #000;
-  width: 150px;
-  height: 200px;
-  line-height: 200px;
-  font-size: 5em;
-  text-align: center;
-  color: #FFF;
-  opacity: 0.95;
-  border-radius: 10px;
-}
-
-.a {
-  transform: rotateY(0deg) translateZ(250px);
-  background: #ed1c24;
-}
-.b {
-  transform: rotateY(40deg) translateZ(250px);
-  background: #0072bc;
-}
-.c {
-  transform: rotateY(80deg) translateZ(250px);
-  background: #39b54a;
-}
-.d {
-  transform: rotateY(120deg) translateZ(250px);
-  background: #f26522;
-}
-.e {
-  transform: rotateY(160deg) translateZ(250px);
-  background: #630460;
-}
-.f {
-  transform: rotateY(200deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.g {
-  transform: rotateY(240deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.h {
-  transform: rotateY(280deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.i {
-  transform: rotateY(320deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.next, .prev {
-  /*color: #444;*/
-  position: absolute;
-  top: 700px;
-  margin-left:100px;
-  margin-right:100px;
-  padding: 1em 2em;
-  cursor: pointer;
-  transition: box-shadow 0.1s, top 0.1s;
-}
-.next{
-  transform: rotateY(180deg);
-}
-.next:hover, .prev:hover { color: #000; }
-.next:active, .prev:active {
-}
-.next { right: 5em; }
-.prev { left: 5em; }
-    </style>
-
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+        <h1>The Chubby Cups</h1>
       </div>
       <ul class="tab">
-        <li><a href="/home" class="tablinks" >Home</a></li>
-        <li><a href="/results" class="tablinks" >Results</a></li>
+        <li><a href="/" class="tablinks" >Home</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
         <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
@@ -129,12 +39,9 @@
     </div>
     <div class="next"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
     <div class="prev"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
-      <p>Welcome to The Chubby Cups. This comprehansive book catalog accesses exclusively free books for you to enjoy. If the book you want is not free, use the map function to easily access Try a search below or access one of the suggested books here.</p>
-      <form id="form" onsubmit="return false;">
-        <h2>What book do you want to find?</h2>
-    <input type="text" id="userInput" />
-    <input type="submit" onclick="getbook();" />
-</form>
+      <p>Welcome to The Chubby Cups. This comprehansive book catalog accesses exclusively free books for you to enjoy. Working off the idea that everyone should be given the opportunity to read free books located in the public domain, this search engine lets you find books copyright in a legitamite way without going through shady websites or outright piracy</p>
+      <p>Search for a book for school or for pleasure. For reference, most books published before 1923 are in the public domain. Please use the search function in the other tab or take a look through our suggested titles here in the carousel that contain the most popular reads.</p>
+      <p>As an additional feature, you can also access notes to attach to your books. Now you have convient place to both find free books and keep track of your thoughts about them.</p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 var carousel = $(".carousel"),

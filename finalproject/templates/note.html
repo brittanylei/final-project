@@ -5,22 +5,28 @@
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
-  <body class="notepage">
+  <body>
 
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+          <h1>The Chubby Cups</h1>
       </div>
       <ul class="tab">
-        <li><a href="/home" class="tablinks" >Home</a></li>
-        <li><a href="/results" class="tablinks" >Results</a></li>
+        <li><a href="/" class="tablinks" >Home</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
         <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
+        <li><a href="/new" class="tablinks" >New</a></li>
+
+      <section>
+      <section class="notepage">
       </ul>
-        <em id="quotedis">{{note.quote}}</em><br>
+      <section class="notepage">
+        <div class="quotedis"><font size="28"><em>{{note.quote}}</em></font></div><br>
         <div class="date">{{note.date}}</div>
         <br>
         Thoughts?
@@ -32,6 +38,7 @@
         {% for comment in comments %}
           <p>{{comment.text}}</p>
         {% endfor%}
+      </section>
     </div>
     <br>
   </body>
