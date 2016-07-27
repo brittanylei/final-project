@@ -212,3 +212,18 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 }
 .next { right: 5em; }
 .prev { left: 5em; }
+
+.notepage {
+  margin-right:50px;
+  font-family: Palatino;
+
+}
+
+em {
+  color: white;
+  margin-left: 25px; 
+}
+
+#content {
+  text-decoration: none;
+}

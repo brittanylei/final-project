@@ -5,7 +5,7 @@
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
-  <body class="notepage">
+  <body>
 
     <div class = content>
       <div id = heading>
@@ -19,8 +19,9 @@
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
+      <section class="notepage">
       </ul>
-        <em id="quotedis">{{note.quote}}</em><br>
+        <div class="quotedis"><font size="28"><em>{{note.quote}}</em></font></div><br>
         <div class="date">{{note.date}}</div>
         <br>
         Thoughts?
@@ -32,6 +33,7 @@
         {% for comment in comments %}
           <p>{{comment.text}}</p>
         {% endfor%}
+      </section>
     </div>
     <br>
   </body>
