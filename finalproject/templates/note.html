@@ -5,7 +5,7 @@
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
-  <body>
+  <body class="notepage">
 
     <div class = content>
       <div id = heading>
@@ -24,7 +24,7 @@
         <div class="date">{{note.date}}</div>
         <br>
         Thoughts?
-        <form action="{{note.url()}}" method="post">
+        <form id="newc" action="{{note.url()}}" method="post">
           <textarea name="comment"></textarea><br>
           <button>Submit</button>
         </form>
