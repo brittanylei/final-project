@@ -9,8 +9,6 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
-<<<<<<< HEAD
-=======
 
 class Books(ndb.Model):
     name = ndb.StringProperty()
@@ -32,7 +30,6 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
->>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -192,9 +189,6 @@ app = webapp2.WSGIApplication([
     ('/notes', NoteListHandler),
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
-<<<<<<< HEAD
     ('/book', BookHandler)
-=======
     ('/breakout', BreakOutHandler),
->>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 ], debug=True)
