@@ -13,20 +13,21 @@
     function performSearch(){
       var query = $("#searchField").val();
       var API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-      var queryUrl = API_URL + query;
+      var queryUrl = API_URL + query + "&filter=free-ebooks";
       $.getJSON(queryUrl, displayResults);
     }
     function displayResults(json){
-
       var results = $('#results');
       var items = json.items;
       results.html('');
 
       for (var i = 0; i < items.length; i++){
         var item = items[i];
+        console.log(item);
         var info = item.volumeInfo;
-        if(!item.authors){
-          item.authors=[];
+        var access = item.accessInfo;
+        if(!info.authors){
+          info.authors= "Unknown";
         }
         if (!info.previewLink){
           info.previewLink = "";
@@ -37,14 +38,18 @@
         var title = info.title;
         var authors = info.authors;
         var thumbnail = info.imageLinks.thumbnail;
-        var previewLink = info.previewLink;
+        var webLink = access.webReaderLink;
         var id = item.id;
         console.log(item)
 
         results.append(
+<<<<<<< HEAD
           $('<a href="/book?id="' + id + 'target="_blank"><img src="' + thumbnail + '"></a>'),
           $('<h2>' + title + '</h2>'),
           $('<h3>' + authors + '</h3>')
+=======
+          $('<section class="indibook"><div class="bookimage"><a href="' + webLink + '" target="_blank"><img src="' + thumbnail + '"></a></div><div class="booktext"><h2>' + title + '</h2><h3>' + authors + '</h3></div></section>')
+>>>>>>> ed72b4191ba6e28a4dcddfea817190ff43d07314
       );
       }
     }
@@ -69,9 +74,13 @@
       <br>
       <input type="text" id="searchField">
       <button id="searchButton">Search</button>
-      <div id="results">
-
-      </div>
+      <br>
+      <br>
+      <section>
+          <div id="results">
+            <br>
+          </div>
+      </section>
       <p></p>
     </div>
 

@@ -29,7 +29,10 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed72b4191ba6e28a4dcddfea817190ff43d07314
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -51,8 +54,24 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(template_values))
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('home.html')
-        self.response.out.write(template.render())
+        user = users.get_current_user()
+
+        if user:
+            email = user.email()
+            logout_url = users.CreateLogoutURL('/')
+            template = jinja_environment.get_template('home.html')
+            template1 = jinja_environment.get_template('sign-out.html')
+            template_values = {'email':email, 'logout_url':logout_url}
+            self.response.out.write(template.render() + template1.render(template_values))
+        elif self.request.path == 'home':
+            template = jinja_environment.get_template('home.html')
+            self.response.write(template.render())
+        else:
+            login_url = users.CreateLoginURL('/')
+            template = jinja_environment.get_template('sign-in.html')
+            template_values = {'login_url':login_url}
+            template = jinja_environment.get_template('home.html')
+            self.response.out.write(template.render(template_values))
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
@@ -78,22 +97,23 @@ class ApiStuffHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('apistuff.html')
         self.response.out.write(template.render())
 
-class SignInHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        email = user.email()
-
-        if user:
-            logout_url = users.CreateLogoutURL('/')
-            template = jinja_environment.get_template('sign-in.html')
-            template_values = {'email':email, 'logout_url':logout_url}
-
-            self.response.out.write(template.render(template_values))
-
-        else:
-            login_url = users.CreateLoginURL('/')
-            self.response.write('Logging Out')
+# class SignInHandler(webapp2.RequestHandler):
+#     def get(self):
+#         user = users.get_current_user()
+#
+#         email = user.email()
+#
+#         if user:
+#             logout_url = users.CreateLogoutURL('/')
+#             template = jinja_environment.get_template('sign-in.html')
+#             template_values = {'email':email, 'logout_url':logout_url}
+#
+#             self.response.out.write(template.render(template_values))
+#         else:
+#             login_url = users.CreateLoginURL('/')
+#             template = jinja_environment.get_template('sign-in.html')
+#             template_values = {login_url':login_url}
+#             self.response.out.write(template.render(template_values))
 
 class PracticeHandler(webapp2.RequestHandler):
     def get(self):
@@ -104,8 +124,6 @@ class PracticeHandler(webapp2.RequestHandler):
 
 class MyBooksHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-
         template= jinja_environment.get_template('mybooks.html')
         self.response.out.write(template.render())
 
@@ -129,7 +147,7 @@ class NoteListHandler(webapp2.RequestHandler):
 
     def post(self):
         # 1. Get the info from the request.
-        note = self.request.get('note')
+        quote = self.request.get('quote')
 
         # 2. Logic (interact w database)
         note = Note(quote=quote)
@@ -173,7 +191,6 @@ class NotesHandler(webapp2.RequestHandler):
 class BreakOutHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-
         template= jinja_environment.get_template('breakout.html')
         self.response.out.write(template.render())
 
@@ -182,12 +199,16 @@ app = webapp2.WSGIApplication([
     ('/home', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
-    ('/signin', SignInHandler),
+    # ('/signin', SignInHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
     ('/notes', NoteListHandler),
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
+<<<<<<< HEAD
     ('/breakout', BreakOutHandler)
+=======
+    ('/breakout', BreakOutHandler),
+>>>>>>> ed72b4191ba6e28a4dcddfea817190ff43d07314
 ], debug=True)
