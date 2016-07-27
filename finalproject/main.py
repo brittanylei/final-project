@@ -9,20 +9,25 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
-
-class Books(ndb.Model):
-    name = ndb.StringProperty()
-    description = ndb.StringProperty()
-    genre = ndb.StringProperty()
-    author = ndb.StringProperty()
-    date_published = ndb.DateTimeProperty()
-    ISBN = ndb.IntegerProperty()
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
         self.response.out.write(template.render())
 
+    def post(self):
+        #
+        # country = self.response.get('country')
+        # title = self.response.get('title')
+        # publishedDate = self.response.get('publishedDate')
+        # language = self.response.get('language')
+        # authors = self.response.get('authors')
+        #
+        # template_values = {'country':country, 'title':title, 'publishedDate':publishedDate, 'language':language,
+        # 'authors':authors}
+
+        book_id = self.response.get('')
+        template = jinja_environment.get_template('book.html')
+        self.response.out.write(template.render(template_values))
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('home.html')
@@ -35,12 +40,14 @@ class ResultsHandler(webapp2.RequestHandler):
 
 class BookHandler(webapp2.RequestHandler):
     def get(self):
+        id = self.request.get('id')
+        logging.info("the id is " + id)
+        template_values = {'info':id}
         template= jinja_environment.get_template('book.html')
-        self.response.out.write(template.render())
+        self.response.out.write(template.render(template_values))
 
 class ApiStuffHandler(webapp2.RequestHandler):
     def get(self):
-
         #url = "https://www.googleapis.com/books/v1/volumes?q=" + API_KEY
         #results = urlfetch.fetch(url)
 
@@ -67,7 +74,6 @@ class SignInHandler(webapp2.RequestHandler):
         else:
             login_url = users.CreateLoginURL('/')
             self.response.write('Logging Out')
-
 
 class PracticeHandler(webapp2.RequestHandler):
     def get(self):
@@ -107,4 +113,5 @@ app = webapp2.WSGIApplication([
     ('/aboutus', AboutUsHandler),
     ('/notes', NotesHandler),
     ('/practice', PracticeHandler),
+    ('/book', BookHandler)
 ], debug=True)
