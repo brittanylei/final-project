@@ -6,33 +6,33 @@
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <p>La la la i hate murgers</p>
 
-    <p>This is the api stuff page</p>
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+          <h1>The Chubby Cups</h1>
+      </div>
+      <ul class="tab">
+        <li><a href="/" class="tablinks" >Home</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
+        <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notes" class="tablinks" >Notes</a></li>
+        <li><a href="/signin" class="tablinks" >Sign-in</a></li>
+        <li><a href="/new" class="tablinks" >New</a></li>
+      </ul>
 
-    <script type="text/javascript">
-    var httpRequest = new XMLHttpRequest();
-    function nameOfTheFunction() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        console.log(JSON.parse(httpRequest.responseText));
-        
-      } else {
-    // still not ready
-      }
-    }
-    var my_search = "Pride and Prejudice";
-    var my_search_list = my_search.split(" ");
-    my_search = "";
-    for (var i = 0; i < my_search_list.length; i++){
-      my_search = my_search + '+' + my_search_list[i];
-    }
-    my_search = my_search + "&filter=free-ebooks"
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
-    httpRequest.send(null);
-    httpRequest.onreadystatechange = nameOfTheFunction;
-
-
-    </script>
-
+    </div>
+    <br>
   </body>
+  <br>
+  <br>
+  <div id ="wrapper">
+  <footer>
+
+  <p>This code is brought to you in part by the CSSI 2016 in MTV. Thanks to all the Google employees, interns, and TAs who made this site possible.</p>
+
+</footer>
+</div>
 </html>
