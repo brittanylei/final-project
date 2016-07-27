@@ -137,8 +137,8 @@ class NoteListHandler(webapp2.RequestHandler):
         notes = Note.query().fetch()
 
         # 3. Render response
-        template_values = {'notes':notes}
         template = jinja_environment.get_template('notelist.html')
+        template_values = {'notes':notes}
         self.response.write(template.render(template_values))
 
     def post(self):

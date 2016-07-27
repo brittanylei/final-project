@@ -85,7 +85,6 @@ ul.tab li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  transition: 0.3s;
   font-size: 17px;
   font-family: Palatino;
 }
@@ -245,12 +244,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 }
 .next { right: 5em; }
 .prev { left: 5em; }
-
-.notepage {
-  margin-right:50px;
-  font-family: Palatino;
-
-}
 
 em {
   color: white;
