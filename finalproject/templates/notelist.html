@@ -21,11 +21,8 @@
         <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
       <h2> Notes </h2>
-<<<<<<< HEAD
       <form action="/notes" method="post">
-=======
       <form id="newc" action="/notes" method="post">
->>>>>>> b01d0b6189979852d10c5df6a723e07c7b87bfd4
         <input name="book" placeholder="Book title goes here"><br>
         <textarea name="quote" placeholder="Enter quote"></textarea><br>
         <button>Add</button>
@@ -34,8 +31,8 @@
       {% for note in notes %}
         <div id="note">
           <h2>
-            <a href="{{note.url()}}">
-              <section id="content">{{note.quote}}</section>
+            <a id="content" href="{{note.url()}}">
+              <section>{{note.quote}}</section>
             </a>
           </h2>
 
