@@ -3,7 +3,7 @@ p{
 }
 
 body {
-  background-image: url("http://eskipaper.com/images/sunset-yellow-2.jpg");
+  background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
 }
 
 #heading img {
@@ -99,16 +99,21 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 
 #results img {
   margin-left: 5em;
+  font-family: Palatino;
   box-shadow: 10px 10px 5px black;
 }
 
 #results h2{
-  color: blue;
+  color: white;
   margin-left: 50px;
+  font-family: Palatino;
+  text-shadow: 1px 1px 2px black;
 }
 #results h3{
-  color: green;
+  color: 	#b1674e;
   margin-left: 50px;
+  font-family: Palatino;
+  text-shadow: 1px 1px 2px black;
 }
 
 .booktext {
