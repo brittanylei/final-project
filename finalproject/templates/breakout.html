@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Search Function</title>
+    <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(setup);
+    function setup() {
+      $('#searchButton').click(performSearch);
+    }
+    function performSearch(){
+      var query = $("#searchField").val();
+      var API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
+      var queryUrl = API_URL + query;
+      $.getJSON(queryUrl, displayResults);
+    }
+    function displayResults(json){
+
+      var results = $('#results');
+      var items = json.items;
+      results.html('');
+
+      for (var i = 0; i < items.length; i++){
+        var item = items[i];
+        var info = item.volumeInfo;
+        if(!item.authors){
+          item.authors=[];
+        }
+        if (!info.previewLink){
+          info.previewLink = "";
+        }
+        if (!info.imageLinks){
+          info.imageLinks=[];
+        }
+        var title = info.title;
+        var authors = info.authors;
+        var thumbnail = info.imageLinks.thumbnail;
+        var previewLink = info.previewLink;
+        results.append(
+          $('<a href="' + previewLink + '" + target="_blank"><img src="' + thumbnail + '"></a>'),
+          $('<h2>' + title + '</h2>'),
+          $('<h3>' + authors + '</h3>')
+      );
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+      </div>
+      <ul class="tab">
+        <li><a href="/home" class="tablinks" >Home</a></li>
+        <li><a href="/results" class="tablinks" >Results</a></li>
+        <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notes" class="tablinks" >Notes</a></li>
+        <li><a href="/signin" class="tablinks" >Sign-in</a></li>
+      </ul>
+      <br>
+      <br>
+      <input type="text" id="searchField">
+      <button id="searchButton">Search</button>
+      <div id="results">
+
+      </div>
+      <p></p>
+    </div>
+
+  </body>
+  <div id ="wrapper">
+  <footer>
+
+  <p>This code is brought to you in part by the CSSI 2016 in MTV. Thanks to all the Google employees, interns, and TAs who made this site possible.</p>
+
+</footer>
+</div>
+</html>

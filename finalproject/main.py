@@ -97,6 +97,13 @@ class NotesHandler(webapp2.RequestHandler):
         template= jinja_environment.get_template('notes.html')
         self.response.out.write(template.render())
 
+class BreakOutHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('breakout.html')
+        self.response.out.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/home', HomeHandler),
@@ -107,4 +114,5 @@ app = webapp2.WSGIApplication([
     ('/aboutus', AboutUsHandler),
     ('/notes', NotesHandler),
     ('/practice', PracticeHandler),
+    ('/breakout', BreakOutHandler),
 ], debug=True)
