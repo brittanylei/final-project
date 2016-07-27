@@ -22,26 +22,32 @@
 
       <p>This is the results page</p>
       <p>What's up? Why not?</p>
+      <div id="books">
+      </div>
+
+
     </div>
+
     <script type="text/javascript">
     var httpRequest = new XMLHttpRequest();
 
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         console.log(JSON.parse(httpRequest.responseText));
-
         var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
-
         console.log(items);
 
         for (var i =0; i < items.length; i++) {
-          console.log(items[i].saleInfo.country);
-          console.log(items[i].volumeInfo.title);
-          console.log(items[i].volumeInfo.publishedDate);
-          console.log(items[i].volumeInfo.printType);
-          console.log(items[i].volumeInfo.language);
-          console.log(items[i].volumeInfo.authors);
+          var country =items[i].saleInfo.country;
+          var title =items[i].volumeInfo.title;
+          var date = items[i].volumeInfo.publishedDate;
+          var language = items[i].volumeInfo.language;
+          var authors = items[i].volumeInfo.authors;
+          var id = items[i].id;
+          console.log("This is the book # "+ (i+1))
 
+<<<<<<< HEAD
+=======
         // Problem - this for loop only works if the "authors" array exists in items[i]
         //            if it doesn't, the loop returns an error.
         // Solution - condition could be : if authors exists (?)
@@ -56,16 +62,15 @@
         // }
  -->
         //  console.log(items[i];
+>>>>>>> 12f89f406458cff36cb02db05c5cf65264e9d721
 
-
-
-          //for (var a = 0; a < items[i].saleInfo.length ; i++){
-            //console.log(items[i].saleInfo.country);
-          //console.log();
-          //}
-
-
-         // this is a string of dictionaries
+          var book = document.createElement("a");
+          console.log("test1");
+          book.href = "/book?id=" + id;
+          book.text = country + title + date + language + authors + id;
+          console.log("test2");
+          books.appendChild(book);
+          document.createElement("br");
       }
     //  else {
     // still not ready
@@ -85,6 +90,7 @@
 
 
     </script>
+
   </body>
     <div id ="wrapper">
     <footer>
