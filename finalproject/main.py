@@ -29,10 +29,6 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ed72b4191ba6e28a4dcddfea817190ff43d07314
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -206,9 +202,5 @@ app = webapp2.WSGIApplication([
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
-<<<<<<< HEAD
     ('/breakout', BreakOutHandler)
-=======
-    ('/breakout', BreakOutHandler),
->>>>>>> ed72b4191ba6e28a4dcddfea817190ff43d07314
 ], debug=True)
