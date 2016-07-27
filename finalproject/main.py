@@ -9,7 +9,10 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 63bfc435df57fa346c12459abf98adef4f5c6ed5
 class Books(ndb.Model):
     name = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -30,6 +33,10 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 63bfc435df57fa346c12459abf98adef4f5c6ed5
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
