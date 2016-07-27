@@ -3,7 +3,11 @@ p{
 }
 
 body {
-  background-image: url("http://eskipaper.com/images/sunset-yellow-2.jpg");
+  background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
+}
+
+#heading{
+  background-image: url("http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg");
 }
 
 #heading img {
@@ -11,13 +15,17 @@ body {
   margin-bottom: -7px;
   width: 100%;
   opacity:0;
-  transition: opacity 10s;
+  transition: opacity 5s;
 }
-#heading h2 {
+#heading h1 {
    position: absolute;
-   top: 200px;
-   left: 0;
+   left:500px;
+   top:200px;
    width: 100%;
+   font-family: Palatino;
+   color: #F1F1D4;
+   text-shadow: 2px 2px 4px black;
+   font-size: 50px;
 }
 
 #bookpic .item{
@@ -99,16 +107,41 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 
 #results img {
   margin-left: 5em;
+  font-family: Palatino;
   box-shadow: 10px 10px 5px black;
 }
 
 #results h2{
-  color: blue;
+  color: white;
   margin-left: 50px;
+  width: 600px;
+  font-family: Palatino;
+  text-shadow: 1px 1px 2px black;
 }
 #results h3{
-  color: green;
+  color: 	#ffffb3;
   margin-left: 50px;
+  width: 600px;
+  font-family: Palatino;
+  text-shadow: 1px 1px 2px black;
+}
+
+#searchField{
+  margin-left: 7em;
+
+}
+  #searchButton {
+	box-shadow: 0px 1px 0px 0px #fff6af;
+	background-color:#ffec64;
+	border-radius:2px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
 }
 
 .booktext {
@@ -221,7 +254,7 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 
 em {
   color: white;
-  margin-left: 25px; 
+  margin-left: 25px;
 }
 
 #content {
