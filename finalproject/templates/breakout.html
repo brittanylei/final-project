@@ -38,8 +38,9 @@
         var authors = info.authors;
         var thumbnail = info.imageLinks.thumbnail;
         var previewLink = info.previewLink;
+        var id = item.id;
         results.append(
-          $('<a href="' + previewLink + '" + target="_blank"><img src="' + thumbnail + '"></a>'),
+          $('<a href="/book?id=" + id + target="_blank"><img src="' + thumbnail + '"></a>'),
           $('<h2>' + title + '</h2>'),
           $('<h3>' + authors + '</h3>')
       );
