@@ -191,8 +191,8 @@ class BreakOutHandler(webapp2.RequestHandler):
         self.response.out.write(template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/home', HomeHandler),
+    ('/new', MainHandler),
+    ('/', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
     # ('/signin', SignInHandler),
