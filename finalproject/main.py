@@ -9,7 +9,6 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
-
 class Books(ndb.Model):
     name = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -189,7 +188,6 @@ class NotesHandler(webapp2.RequestHandler):
 class BreakOutHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-
         template= jinja_environment.get_template('breakout.html')
         self.response.out.write(template.render())
 

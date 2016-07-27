@@ -13,7 +13,7 @@
     function performSearch(){
       var query = $("#searchField").val();
       var API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-      var queryUrl = API_URL + query;
+      var queryUrl = API_URL + query + "&filter=free-ebooks";
       $.getJSON(queryUrl, displayResults);
     }
     function displayResults(json){
@@ -67,6 +67,8 @@
       <br>
       <input type="text" id="searchField">
       <button id="searchButton">Search</button>
+      <br>
+      <br>
       <div id="results">
 
       </div>
