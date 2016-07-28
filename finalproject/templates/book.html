@@ -17,14 +17,14 @@
         //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
           var item = items               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
-
+          var access = item.accessInfo;
           // This section of code fills properties that are nil with an empty value, such as an empty array or string //
           if(!v_inf.authors){
             v_inf.authors= "Unknown";
           }
-          if (!v_inf.previewLink){
-            v_inf.previewLink = "";
-          }
+          //if (!v_inf.previewLink){
+          //  v_inf.previewLink = "";
+          //}
           if (!v_inf.imageLinks){
             v_inf.imageLinks=[];
           }
@@ -37,6 +37,7 @@
           var date = v_inf.publishedDate;
           var language = v_inf.language;
           var authors = v_inf.authors;
+          var webLink = access.webReaderLink;
           //var description = v_inf.description;
           var id = item.id;
           //var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
@@ -69,10 +70,10 @@
           var desText = document.createTextNode("More info: " + type); // date + ISBN + page count + // date + ISBN + page count +
           des.appendChild(desText)
 
-          var read_link = document.createElement("a");
-          read_link.href = v_inf.previewLink; //find better web reader to use
-          link_text = document.createTextNode("Read Here"); //
-          read_link.appendChild(link_text);
+          var myLink = document.createElement("a");
+          myLink.href = access.webReaderLink; //find better web reader to use
+          webLinks = document.createTextNode("Web Link"); //
+          myLink.appendChild(webLinks);
 
           var picture = document.createElement("img")
           picture.src = image;
@@ -84,7 +85,7 @@
             //specific_book.appendChild(hard);
             //specific_book.appendChild(page);
             specific_book.appendChild(des);
-            specific_book.appendChild(read_link);
+            specific_book.appendChild(webLinks);
 
 
 
