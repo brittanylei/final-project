@@ -16,6 +16,16 @@
       var queryUrl = API_URL + query + "&filter=free-ebooks";
       $.getJSON(queryUrl, displayResults);
     }
+
+    $(document).keypress(function performSearch(e) {
+    if(e.which == 13) {
+      var query = $("#searchField").val();
+      var API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
+      var queryUrl = API_URL + query + "&filter=free-ebooks";
+      $.getJSON(queryUrl, displayResults);
+    }
+    });
+
     function displayResults(json){
       var results = $('#results');
       var items = json.items;
