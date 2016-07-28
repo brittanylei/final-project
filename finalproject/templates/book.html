@@ -40,8 +40,10 @@
           var language = v_inf.language;
           var authors = v_inf.authors;
           var webLink = access.webReaderLink;
+          //webLink = webLink + target="_blank";
           var thepdf = access.pdf;
           var pdfLink = thepdf.downloadLink;
+          //pdfLink = pdfLink + target="_blank";
           //var description = v_inf.description;
           if(!thepdf.downloadLink){
             thepdf.downloadLink= "/nopdf";
