@@ -49,6 +49,9 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('book.html')
         self.response.out.write(template.render(template_values))
 class HomeHandler(webapp2.RequestHandler):
+
+    # myscript = '<script>function blah = </script>'
+
     def get(self):
         user = users.get_current_user()
 
@@ -59,15 +62,13 @@ class HomeHandler(webapp2.RequestHandler):
             template1 = jinja_environment.get_template('sign-out.html')
             template_values = {'email':email, 'logout_url':logout_url}
             self.response.out.write(template.render() + template1.render(template_values))
-        elif self.request.path == 'home':
-            template = jinja_environment.get_template('home.html')
-            self.response.write(template.render())
         else:
             login_url = users.CreateLoginURL('/')
-            template = jinja_environment.get_template('sign-in.html')
-            template_values = {'login_url':login_url}
             template = jinja_environment.get_template('home.html')
-            self.response.out.write(template.render(template_values))
+            template1 = jinja_environment.get_template('sign-in.html')
+            template_values = {'login_url':login_url}
+            self.response.out.write(template.render(template_values) + template1.render(template_values))
+            # self.redirect(login_url)
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
