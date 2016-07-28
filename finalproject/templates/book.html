@@ -11,7 +11,8 @@
 
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items
+        console.log(typeof(JSON.parse(httpRequest.responseText).items[0]));
+        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items, brings back the first book, which is the one we want
         console.log(items);
 
         //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
@@ -39,7 +40,6 @@
           var authors = v_inf.authors;
           //var description = v_inf.description;
           var id = item.id;
-          //var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
           var image = v_inf.imageLinks.thumbnail;
