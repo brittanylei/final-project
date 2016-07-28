@@ -16,8 +16,14 @@ footer p{
   font-size: 16px;
 }
 
+html{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
+  background-attachment: fixed;
 }
 
 #heading{

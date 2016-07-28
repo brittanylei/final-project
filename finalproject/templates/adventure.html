@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="./book.ico"/>
+
+  </head>
+  <body>
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+        <h1>The Chubby Cups</h1>
+      </div>
+      <ul class="tab">
+        <li><a href="/" class="tablinks" >Home</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notes" class="tablinks" >Notes</a></li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+        <div class="carousel">
+      <a href="/book?id=RqlEAAAAYAAJ"><img class ="item a" src="https://images-na.ssl-images-amazon.com/images/P/140272599X.jpg"></a>
+      <a href="/book?id=__AYAAAAYAAJ"><img class ="item b" src="http://www.jimtierneyart.com/images/eighty.jpg"></a>
+      <a href="/book?id=KW0YAAAAYAAJ"><img class ="item c" src="http://vignette2.wikia.nocookie.net/childrensbooks/images/d/dd/The_Three_Musketeers.jpg/revision/latest?cb=20120917072411" ></a>
+      <a href="/book?id=RyEEAAAAQAAJ"><img class ="item d" src="http://ecx.images-amazon.com/images/I/51%2B7HNnTHaL.jpg"></a>
+      <a href="/book?id=UPAYAAAAYAAJ"><img class ="item e" src="https://s-media-cache-ak0.pinimg.com/236x/5f/83/4b/5f834bdb2177bd5b9626487d33cf9b93.jpg"></a>
+      <a href="/book?id=XBwlAAAAMAAJ"><img class ="item f" src="http://www.musowls.org/documents/library_images/robinson.jpg"></a>
+      <a href="/book?id=qaHRAAAAMAAJ"><img class ="item g" src="https://www.penguin.com.au/jpg-large/9780451531131.jpg"></a>
+      <a href="/book?id=v2laAAAAMAAJ"><img class ="item h" src="http://d.gr-assets.com/books/1348239402l/162898.jpg"></a>
+      <a href="/book?id=ZbBOAAAAMAAJ"><img class ="item i" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Tarzan_of_the_Apes_in_color.jpg"></a>
+    </div>
+    </div>
+    <div class="next"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+    <div class="prev"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+      <p>Welcome to The Chubby Cups. This is the adventure genre where you can find our featured books with a sense of adventure. Scroll through the carousel and see for yourself which book speaks to you.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var carousel = $(".carousel"),
+  currdeg = 0;
+
+$(".next").on("click", {
+  d: "n"
+}, rotate);
+$(".prev").on("click", {
+  d: "p"
+}, rotate);
+
+function rotate(e) {
+  if (e.data.d == "n") {
+    currdeg = currdeg - 40;
+  }
+  if (e.data.d == "p") {
+    currdeg = currdeg + 40;
+  }
+  carousel.css({
+    "-webkit-transform": "rotateY(" + currdeg + "deg)",
+    "-moz-transform": "rotateY(" + currdeg + "deg)",
+    "-o-transform": "rotateY(" + currdeg + "deg)",
+    "transform": "rotateY(" + currdeg + "deg)"
+  });
+}
+</script>
+<!-- {{myscript}} -->
+  </div>
+  <br>
+  <br>
+    </div>
+    <br>
+    <!-- <input onclick=function/> -->
+  </body>
+  <br>
+  <br>
+  <div id ="wrapper">
+  <footer>
+
+  <p>This code is brought to you in part by the CSSI 2016 in MTV. Thanks to all the Google employees, interns, and TAs who made this site possible.</p>
+
+</footer>
+</div>
+</html>
