@@ -11,6 +11,7 @@
 
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        console.log(typeof(JSON.parse(httpRequest.responseText).items[0]));
         var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items, brings back the first book, which is the one we want
         console.log(items);
 
@@ -28,6 +29,9 @@
           if (!v_inf.imageLinks){
             v_inf.imageLinks=[];
           }
+          if (!v_inf.pageCount){
+            v_inf.pageCount = "?";
+          }
           //
 
           var title =v_inf.title;
@@ -36,19 +40,34 @@
           var authors = v_inf.authors;
           //var description = v_inf.description;
           var id = item.id;
-
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
           var image = v_inf.imageLinks.thumbnail;
 
           //section for the books information.
-          var header = document.createElement("h2"); // title + authors
-          var header_text = document.createTextNode(title + " written by " + authors);
+          var header = document.createElement("h1"); // title + authors // title + authors
+          var header_text = document.createTextNode(title);
           header.appendChild(header_text);
 
-          var para = document.createElement("p");
-          var paraText = document.createTextNode(date + " " + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
-          para.appendChild(paraText)
+          var header2 = document.createElement("h2"); // title + authors
+          var header2_text = document.createTextNode(" written by " + authors);
+          header2.appendChild(header2_text);
+
+          var pubs = document.createElement("p");
+          var pubsText = document.createTextNode("Published: " + date+ ", " + page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+          pubs.appendChild(pubsText)
+
+          //var hard = document.createElement("p");
+          //var hardText = document.createTextNode(hard_cover_id); // date + ISBN + page count + // date + ISBN + page count +
+          //hard.appendChild(hardText)
+
+          var page = document.createElement("p");
+          var pageText = document.createTextNode(page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+          page.appendChild(pageText)
+
+          var des = document.createElement("p");
+          var desText = document.createTextNode("More info: " + type); // date + ISBN + page count + // date + ISBN + page count +
+          des.appendChild(desText)
 
           var read_link = document.createElement("a");
           read_link.href = v_inf.previewLink; //find better web reader to use
@@ -58,10 +77,16 @@
           var picture = document.createElement("img")
           picture.src = image;
 
-          specific_book.appendChild(header);
-          specific_book.appendChild(picture);
-          specific_book.appendChild(para);
-          specific_book.appendChild(read_link);
+            specific_book_img.appendChild(picture);
+            specific_book.appendChild(header);
+            specific_book.appendChild(header2);
+            specific_book.appendChild(pubs);
+            //specific_book.appendChild(hard);
+            //specific_book.appendChild(page);
+            specific_book.appendChild(des);
+            specific_book.appendChild(read_link);
+
+
 
     //   else {
     // still not ready
@@ -89,12 +114,14 @@
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
         <li><a href="/breakout" class="tablinks" >Search</a></li>
-        <li><a href="/apistuff" class="tablinks" >API Stuff</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
       </ul>
-      <p id = "specific_book"></p>
+      <div class="indibook">
+      <div id="specific_book_img"></div>
+      <div id = "specific_book"></div>
+    </div>
     </div>
     <br>
 
