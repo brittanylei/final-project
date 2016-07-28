@@ -55,6 +55,16 @@ class NoPdfHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('nopdf.html')
         self.response.out.write(template.render())
 
+class AdventureHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('adventure.html')
+        self.response.out.write(template.render())
+
+class SciHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('sci.html')
+        self.response.out.write(template.render())
+
 class HomeHandler(webapp2.RequestHandler):
 
     # myscript = '<script>function blah = </script>'
@@ -282,6 +292,8 @@ app = webapp2.WSGIApplication([
     ('/', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
+    ('/adventure', AdventureHandler),
+    ('/sci', SciHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
     ('/notes', NoteListHandler),

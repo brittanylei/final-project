@@ -16,8 +16,14 @@ footer p{
   font-size: 16px;
 }
 
+html{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
+  background-attachment: fixed;
 }
 
 #heading{
@@ -106,6 +112,11 @@ body {
   display: inline-block;
 }
 
+.genre h2{
+  text-align: left;
+}
+
+
 .indibook {
   display: block;
   margin-bottom: 50px;
@@ -178,6 +189,50 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   height: auto;
   width: 100%;
 }
+
+
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #644C37;
+    min-width: 160px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.polaroid{
+  border-width: medium;
+  margin: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  border-top: 8px white solid;
+  border-left: 8px white solid;
+  border-right: 8px white solid;
+  border-bottom: 50px white solid;
+  transform: rotate(-2deg);
+}
+
 
 #results img {
   margin-left: 5em;
@@ -252,55 +307,44 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 .item {
   display: block;
   position: absolute;
-  background: #000;
   width: 150px;
   height: 200px;
   line-height: 200px;
   font-size: 5em;
   text-align: center;
-  color: #FFF;
   opacity: 0.95;
   border-radius: 10px;
 }
 
 .a {
   transform: rotateY(0deg) translateZ(250px);
-  background: #ed1c24;
 }
 .b {
   transform: rotateY(40deg) translateZ(250px);
-  background: #0072bc;
 }
 .c {
   transform: rotateY(80deg) translateZ(250px);
-  background: #39b54a;
 }
 .d {
   transform: rotateY(120deg) translateZ(250px);
-  background: #f26522;
 }
 .e {
   transform: rotateY(160deg) translateZ(250px);
-  background: #630460;
 }
 .f {
   transform: rotateY(200deg) translateZ(250px);
-  background: #8c6239;
 }
 
 .g {
   transform: rotateY(240deg) translateZ(250px);
-  background: #8c6239;
 }
 
 .h {
   transform: rotateY(280deg) translateZ(250px);
-  background: #8c6239;
 }
 
 .i {
   transform: rotateY(320deg) translateZ(250px);
-  background: #8c6239;
 }
 
 .next, .prev {
