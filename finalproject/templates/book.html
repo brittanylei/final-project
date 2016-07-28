@@ -9,14 +9,13 @@
     <script type="text/javascript">
     var httpRequest = new XMLHttpRequest();
 
-    function nameOfTheFunction() {
+    function single_volume_callback() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        console.log(typeof(JSON.parse(httpRequest.responseText).items[0]));
-        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items, brings back the first book, which is the one we want
-        console.log(items);
+        console.log("The response text is " + httpRequest.responseText);
+        var items = JSON.parse(httpRequest.responseText); //going to iterate over the array of items, brings back the first book, which is the one we want
+        console.log("single_volume_callback are " + items);
 
-        //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
-          var item = items               //in this file, only one book is brought back. We use the variable item to represent the singular book
+          var item = items;               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
 
           // This section of code fills properties that are nil with an empty value, such as an empty array or string //
@@ -77,6 +76,8 @@
           var picture = document.createElement("img")
           picture.src = image;
 
+          //This is where all the pieces of information are being appended to the page
+          //Section where everything is displayed
             specific_book_img.appendChild(picture);
             specific_book.appendChild(header);
             specific_book.appendChild(header2);
@@ -91,18 +92,17 @@
     //   else {
     // still not ready
     //       } ends else
-      //  }         // ends for loop
-      }           // ends if loop
+     }           // ends if loop
     }             // ends function
     var my_search = "{{id}}"; //this is will be the id at the top
-    var my_search_list = my_search.split(" "); //separates all the words in the user's search text
-    my_search = "";
-    for (var i = 0; i < my_search_list.length; i++){
-      my_search = my_search + '+' + my_search_list[i];
-    }
-    my_search = my_search + "&filter=free-ebooks";
-    httpRequest.onreadystatechange = nameOfTheFunction;
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
+    // var my_search_list = my_search.split(" "); //separates all the words in the user's search text
+    // my_search = "";
+    // for (var i = 0; i < my_search_list.length; i++){
+    //   my_search = my_search + '+' + my_search_list[i];
+    // }
+  //  my_search = my_search + "&filter=free-ebooks";
+    httpRequest.onreadystatechange = single_volume_callback;
+    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes/' + my_search, true);
     httpRequest.send(null);
 
     </script>
@@ -121,6 +121,9 @@
       <div class="indibook">
       <div id="specific_book_img"></div>
       <div id = "specific_book"></div>
+      <div id= "results"></div>
+      <div id = "searchButton"></div>
+      <div id="searchField"></div>
     </div>
     </div>
     <br>
