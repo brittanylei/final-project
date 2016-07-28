@@ -38,121 +38,7 @@
           var authors = v_inf.authors;
           //var description = v_inf.description;
           var id = item.id;
-          var hard_cover_id = v_inf.industryIdentifiers;
-          var page_num = v_inf.pageCount;
-          var type = v_inf.printType.toLowerCase();
-
-          //The if loop will assign the displayed image to the largest image avaialable
-          var image = ""
-          if (v_inf.imageLinks.extraLarge){
-            image = v_inf.imageLinks.extraLarge;
-          }
-          else if (v_inf.imageLinks.large){
-            image = v_inf.imageLinks.large;
-          }
-          else if (v_inf.imageLinks.medium){
-            image = v_inf.imageLinks.medium;
-          }
-          else if(v_inf.imageLinks.small){
-            image = v_inf.imageLinks.small;
-          }
-          else if(v_inf.imageLinks.thumbnail){
-            image = v_inf.imageLinks.thumbnail;
-          }
-          var categories =
-
-
-
-          //section for the books information.
-          var header = document.createElement("h1"); // title + authors
-          var header_text = document.createTextNode(title);
-          head1.appendChild(header_text);
-
-          var headers = document.createElement("h2"); // title + authors
-          var headers_text = document.createTextNode(" written by " + authors);
-          head2.appendChild(header_text);
-
-          var para = document.createElement("p");
-          var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
-          para1.appendChild(paraText)
-
-          var read_link = document.createElement("a");
-          read_link.href = v_inf.previewLink; //find better web reader to use
-          link_text = document.createTextNode("Read Here"); //
-          read_link.appendChild(link_text);
-
-          var image = document.createElement("img")
-          image.src = image;
-
-          specific_book.appendChild(header);
-          specific_book.appendChild(headers);
-          specific_book.appendChild(image);
-          specific_book.appendChild(para);
-          specific_book.appendChild(read_link)
-
-    //   else {
-    // still not ready
-    //       } ends else
-        }         // ends for loop
-      }           // ends if loop
-    }             // ends function
-    var my_search = "{{id}}"; //this is will be the id at the top
-    var my_search_list = my_search.split(" "); //separates all the words in the user's search text
-    my_search = "";
-    for (var i = 0; i < my_search_list.length; i++){
-      my_search = my_search + '+' + my_search_list[i];
-    }
-    my_search = my_search + "&filter=free-ebooks";
-    httpRequest.onreadystatechange = nameOfTheFunction;
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
-    httpRequest.send(null);
-
-    </script>
-    <div class = content>
-      <div id = heading>
-        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
-          <h1>The Chubby Cups</h1>
-      </div>
-      <ul class="tab">
-        <li><a href="/" class="tablinks" >Home</a></li>
-        <li><a href="/breakout" class="tablinks" >Search</a></li>
-        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
-        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
-        <li><a href="/notes" class="tablinks" >Notes</a></li>
-      </ul>
-    <script type="text/javascript">
-    var httpRequest = new XMLHttpRequest();
-
-    function nameOfTheFunction() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
-        console.log(items);
-
-
-
-        for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
-          var item = items[i]               //in this file, only one book is brought back. We use the variable item to represent the singular book
-          var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
-
-          // This section of code fills properties that are nil with an empty value, such as an empty array or string //
-          if(!v_inf.authors){
-            v_inf.authors= "Unknown";
-          }
-          if (!v_inf.previewLink){
-            v_inf.previewLink = "";
-          }
-          if (!v_inf.imageLinks){
-            v_inf.imageLinks=[];
-          }
-          //
-
-          var title =v_inf.title;
-          var date = v_inf.publishedDate;
-          var language = v_inf.language;
-          var authors = v_inf.authors;
-          //var description = v_inf.description;
-          var id = item.id;
-          var hard_cover_id = v_inf.industryIdentifiers;
+          var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
 
@@ -178,9 +64,13 @@
 
 
           //section for the books information.
-          var header = document.createElement("h2"); // title + authors
-          var header_text = document.createTextNode(title + " written by " + authors);
+          var header = document.createElement("h1"); // title + authors
+          var header_text = document.createTextNode(title);
           header.appendChild(header_text);
+
+          var header2 = document.createElement("h2"); // title + authors
+          var header2_text = document.createTextNode(" written by " + authors);
+          header2.appendChild(header2_text);
 
           var para = document.createElement("p");
           var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
@@ -195,9 +85,37 @@
           image.src = image;
 
           specific_book.appendChild(header);
+          specific_book.appendChild(header2);
           specific_book.appendChild(image);
           specific_book.appendChild(para);
           specific_book.appendChild(read_link)
+
+          //Nicole's code
+          // var header = document.createElement("h1"); // title + authors
+          // var header_text = document.createTextNode(title);
+          // head1.appendChild(header_text);
+          //
+          // var headers = document.createElement("h2"); // title + authors
+          // var headers_text = document.createTextNode(" written by " + authors);
+          // head2.appendChild(headers_text);
+          //
+          // var para = document.createElement("p");
+          // var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
+          // para1.appendChild(paraText)
+          //
+          // var read_link = document.createElement("a");
+          // read_link.href = v_inf.previewLink; //find better web reader to use
+          // link_text = document.createTextNode("Read Here"); //
+          // read_link.appendChild(link_text);
+          //
+          // var image = document.createElement("img")
+          // image.src = image;
+          //
+          // specific_book.appendChild(header);
+          // specific_book.appendChild(headers);
+          // specific_book.appendChild(image);
+          // specific_book.appendChild(para);
+          // specific_book.appendChild(read_link)
 
     //   else {
     // still not ready
@@ -217,12 +135,28 @@
     httpRequest.send(null);
 
     </script>
-
-      <p>hello {{info}}</p>
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+        <h1>The Chubby Cups</h1>
+      </div>
+      <ul class="tab">
+        <li><a href="/" class="tablinks" >Home</a></li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notes" class="tablinks" >Notes</a></li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+      <p id="specific_book"></p>
     </div>
     <br>
     <p></p>
-
+</div>
   </body>
   <br>
   <br>
