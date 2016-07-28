@@ -275,7 +275,6 @@ app = webapp2.WSGIApplication([
     ('/', HomeHandler),
     ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
-    # ('/signin', SignInHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
     ('/notes', NoteListHandler),
