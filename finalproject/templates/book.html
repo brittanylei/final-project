@@ -11,13 +11,11 @@
 
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
+        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items
         console.log(items);
 
-
-
-        for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
-          var item = items[i]               //in this file, only one book is brought back. We use the variable item to represent the singular book
+        //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
+          var item = items               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
 
           // This section of code fills properties that are nil with an empty value, such as an empty array or string //
@@ -41,33 +39,13 @@
           var authors = v_inf.authors;
           //var description = v_inf.description;
           var id = item.id;
-          var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
+          //var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
-
-          //The if loop will assign the displayed image to the largest image avaialable
-          var picture = ""
-          if (v_inf.imageLinks.extraLarge){
-            image = v_inf.imageLinks.extraLarge;
-          }
-          else if (v_inf.imageLinks.large){
-            image = v_inf.imageLinks.large;
-          }
-          else if (v_inf.imageLinks.medium){
-            image = v_inf.imageLinks.medium;
-          }
-          else if(v_inf.imageLinks.small){
-            image = v_inf.imageLinks.small;
-          }
-          else if(v_inf.imageLinks.thumbnail){
-            image = v_inf.imageLinks.thumbnail;
-          }
-          var categories ="";
-
-
+          var image = v_inf.imageLinks.thumbnail;
 
           //section for the books information.
-          var header = document.createElement("h1"); // title + authors
+          var header = document.createElement("h1"); // title + authors // title + authors
           var header_text = document.createTextNode(title);
           header.appendChild(header_text);
 
@@ -75,55 +53,45 @@
           var header2_text = document.createTextNode(" written by " + authors);
           header2.appendChild(header2_text);
 
-          var para = document.createElement("p");
-          var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " pages " + type + " "   ); // date + ISBN + page count +
-          para.appendChild(paraText)
+          var pubs = document.createElement("p");
+          var pubsText = document.createTextNode("Published: " + date+ ", " + page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+          pubs.appendChild(pubsText)
+
+          //var hard = document.createElement("p");
+          //var hardText = document.createTextNode(hard_cover_id); // date + ISBN + page count + // date + ISBN + page count +
+          //hard.appendChild(hardText)
+
+          var page = document.createElement("p");
+          var pageText = document.createTextNode(page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+          page.appendChild(pageText)
+
+          var des = document.createElement("p");
+          var desText = document.createTextNode("More info: " + type); // date + ISBN + page count + // date + ISBN + page count +
+          des.appendChild(desText)
 
           var read_link = document.createElement("a");
           read_link.href = v_inf.previewLink; //find better web reader to use
           link_text = document.createTextNode("Read Here"); //
           read_link.appendChild(link_text);
 
-          var image = document.createElement("img")
-          image.src = image;
+          var picture = document.createElement("img")
+          picture.src = image;
 
-          specific_book.appendChild(header);
-          specific_book.appendChild(header2);
-          specific_book.appendChild(image);
-          specific_book.appendChild(para);
-          specific_book.appendChild(read_link)
+            specific_book_img.appendChild(picture);
+            specific_book.appendChild(header);
+            specific_book.appendChild(header2);
+            specific_book.appendChild(pubs);
+            //specific_book.appendChild(hard);
+            //specific_book.appendChild(page);
+            specific_book.appendChild(des);
+            specific_book.appendChild(read_link);
 
-          //Nicole's code
-          // var header = document.createElement("h1"); // title + authors
-          // var header_text = document.createTextNode(title);
-          // head1.appendChild(header_text);
-          //
-          // var headers = document.createElement("h2"); // title + authors
-          // var headers_text = document.createTextNode(" written by " + authors);
-          // head2.appendChild(headers_text);
-          //
-          // var para = document.createElement("p");
-          // var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
-          // para1.appendChild(paraText)
-          //
-          // var read_link = document.createElement("a");
-          // read_link.href = v_inf.previewLink; //find better web reader to use
-          // link_text = document.createTextNode("Read Here"); //
-          // read_link.appendChild(link_text);
-          //
-          // var image = document.createElement("img")
-          // image.src = image;
-          //
-          // specific_book.appendChild(header);
-          // specific_book.appendChild(headers);
-          // specific_book.appendChild(image);
-          // specific_book.appendChild(para);
-          // specific_book.appendChild(read_link)
+
 
     //   else {
     // still not ready
     //       } ends else
-        }         // ends for loop
+      //  }         // ends for loop
       }           // ends if loop
     }             // ends function
     var my_search = "{{id}}"; //this is will be the id at the top
@@ -141,7 +109,7 @@
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
-        <h1>The Chubby Cups</h1>
+          <h1>The Chubby Cups</h1>
       </div>
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
@@ -150,16 +118,14 @@
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
       </ul>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="container">
-      <p id="specific_book"></p>
+      <div class="indibook">
+      <div id="specific_book_img"></div>
+      <div id = "specific_book"></div>
+    </div>
     </div>
     <br>
-    <p></p>
-</div>
+
+
   </body>
   <br>
   <br>
