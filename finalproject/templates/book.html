@@ -30,6 +30,9 @@
           if (!v_inf.imageLinks){
             v_inf.imageLinks=[];
           }
+          if (!v_inf.pageCount){
+            v_inf.pageCount = "?";
+          }
           //
 
           var title =v_inf.title;
@@ -73,7 +76,7 @@
           header2.appendChild(header2_text);
 
           var para = document.createElement("p");
-          var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
+          var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " pages " + type + " "   ); // date + ISBN + page count +
           para.appendChild(paraText)
 
           var read_link = document.createElement("a");
