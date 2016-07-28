@@ -5,6 +5,7 @@
     <title>Search Function</title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
     <script>
     $(document).ready(setup);
     function setup() {
@@ -40,7 +41,7 @@
         var authors = info.authors;
         var thumbnail = info.imageLinks.thumbnail;
         var id = item.id;
-        console.log(item);
+
 
         results.append(
         $('<section class="indibook"><div class="bookimage"><a href="' + webLink + '" target="_blank"><img src="' + thumbnail + '"></a></div><div class="booktext"><a href=/book?id=' + id + ' target="_blank"><h2>' + title + '</h2></a><h3>' + authors + '</h3></div></section>'));

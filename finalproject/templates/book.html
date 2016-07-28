@@ -11,11 +11,11 @@
 
     function nameOfTheFunction() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        var items = JSON.parse(httpRequest.responseText).items; //going to iterate over the array of items
+        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items, brings back the first book, which is the one we want
         console.log(items);
 
-        for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
-          var item = items[i]               //in this file, only one book is brought back. We use the variable item to represent the singular book
+        //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
+          var item = items               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
 
           // This section of code fills properties that are nil with an empty value, such as an empty array or string //
@@ -36,7 +36,7 @@
           var authors = v_inf.authors;
           //var description = v_inf.description;
           var id = item.id;
-          var hard_cover_id = v_inf.industryIdentifiers;
+
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
           var image = v_inf.imageLinks.thumbnail;
@@ -47,7 +47,7 @@
           header.appendChild(header_text);
 
           var para = document.createElement("p");
-          var paraText = document.createTextNode(date + " " + hard_cover_id + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
+          var paraText = document.createTextNode(date + " " + " " + page_num + " " + type + " "   ); // date + ISBN + page count +
           para.appendChild(paraText)
 
           var read_link = document.createElement("a");
@@ -66,7 +66,7 @@
     //   else {
     // still not ready
     //       } ends else
-        }         // ends for loop
+      //  }         // ends for loop
       }           // ends if loop
     }             // ends function
     var my_search = "{{id}}"; //this is will be the id at the top
