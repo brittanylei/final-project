@@ -48,6 +48,13 @@ class MainHandler(webapp2.RequestHandler):
         book_id = self.response.get('')
         template = jinja_environment.get_template('book.html')
         self.response.out.write(template.render(template_values))
+
+
+class NoPdfHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('nopdf.html')
+        self.response.out.write(template.render())
+
 class HomeHandler(webapp2.RequestHandler):
 
     # myscript = '<script>function blah = </script>'
@@ -281,5 +288,6 @@ app = webapp2.WSGIApplication([
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
-    ('/breakout', BreakOutHandler)
+    ('/nopdf', NoPdfHandler),
+    ('/breakout', BreakOutHandler),
 ], debug=True)

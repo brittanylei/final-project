@@ -22,6 +22,7 @@
           if(!v_inf.authors){
             v_inf.authors= "Unknown";
           }
+
           //if (!v_inf.previewLink){
           //  v_inf.previewLink = "";
           //}
@@ -38,7 +39,12 @@
           var language = v_inf.language;
           var authors = v_inf.authors;
           var webLink = access.webReaderLink;
+          var thepdf = access.pdf;
+          var pdfLink = thepdf.downloadLink;
           //var description = v_inf.description;
+          if(!thepdf.downloadLink){
+            thepdf.downloadLink= "/nopdf";
+          }
           var id = item.id;
           //var hard_cover_id = v_inf.industryIdentifiers[0].identifier;
           var page_num = v_inf.pageCount;
@@ -71,9 +77,16 @@
           des.appendChild(desText)
 
           var myLink = document.createElement("a");
-          myLink.href = access.webReaderLink; //find better web reader to use
-          webLinks = document.createTextNode("Web Link"); //
+          //myLink.href = access.webReaderLink; //find better web reader to use
+          myLink.setAttribute("href", access.webReaderLink);
+          webLinks = document.createTextNode("Read in Web"); //
           myLink.appendChild(webLinks);
+
+          var Link2 = document.createElement("a");
+          //myLink.href = access.webReaderLink; //find better web reader to use
+          Link2.setAttribute("href", thepdf.downloadLink);
+          pdfLinks = document.createTextNode("Download Pdf"); //
+          Link2.appendChild(pdfLinks);
 
           var picture = document.createElement("img")
           picture.src = image;
@@ -85,7 +98,9 @@
             //specific_book.appendChild(hard);
             //specific_book.appendChild(page);
             specific_book.appendChild(des);
-            specific_book.appendChild(webLinks);
+            specific_book.appendChild(myLink);
+            specific_book.appendChild(Link2);
+
 
 
 
