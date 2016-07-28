@@ -81,6 +81,7 @@
           var myLink = document.createElement("a");
           //myLink.href = access.webReaderLink; //find better web reader to use
           myLink.setAttribute("href", access.webReaderLink);
+          myLink.setAttribute("target", "_blank");
           webLinks = document.createTextNode("Read in Web"); //
           myLink.appendChild(webLinks);
 
