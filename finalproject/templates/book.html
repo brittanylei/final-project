@@ -128,6 +128,11 @@
     httpRequest.send(null);
 
     </script>
+
+
+
+
+
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
@@ -138,19 +143,44 @@
           <a href="/" class="tablinks">Home</a>
           <div class="dropdown-content">
             <a href="/adventure">Adventure</a>
+            <br>
             <a href="/sci">Sci-Fy/Fantasy</a>
+            <br>
+            <a href="/austen">Jane Austen</a>
+            <br>
+            <a href="/dickens">Charles Dickens</a>
+            <br>
+            <a href="/shakespeare">Shakespeare</a>
           </div>
         </li>
-        <li><a href="/breakout" class="tablinks" >Search</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
-        <li><a href="/notes" class="tablinks" >Notes</a></li>
+        <li><a href="/search" class="tablinks" id="searchimg"><img src="http://www.clker.com/cliparts/Y/3/d/w/R/r/search-icon-white-hi.png" height="17px" padding="0px" margin="0px"></a></li>
       </ul>
       <div class="indibook">
       <div id="specific_book_img"></div>
       <div id = "specific_book"></div>
-
+      <div id="notes_section"> </div>
     </div>
+    <!-- <form action="/book" method="post">
+      <input name="book" placeholder="Book title goes here"><br>
+      <textarea name="quote" placeholder="Enter quote"></textarea><br>
+      <button>Add</button>
+      <br>
+    </form> -->
+    <!-- Section for displaying user AND book specific notes -->
+    {% for note in notes %}
+      <div id="note">
+        <h3> {{note.book_title}} <h3>
+        <h2>
+          <a id="content" href="{{note.url()}}">
+            <section>{{note.quote}}</section>
+          </a>
+        </h2>
+
+        <div class="date">{{note.date}}</div>
+      </div>
+    {% endfor %}
     </div>
     <br>
   <!-- TASKS :
@@ -161,6 +191,32 @@
       FUNCTION single_volume_callback
 
     -->
+    <!-- This is for the notes (textbox, post) -->
+    <script id="notes">
+      var div1 = document.createElement("div");
+      var form = document.createElement("form");
+
+      form.setAttribute("action", "/book?id=" + "{{id}}");
+      form.setAttribute("method", "post");
+
+      var txtarea = document.createElement("textarea");
+      txtarea.setAttribute("name", "quote");
+      txtarea.setAttribute("placeholder", "Enter quote");
+
+
+      var btn = document.createElement("button");
+      var btntxt = document.createTextNode("Add");
+
+
+      div1.appendChild(form);
+      form.appendChild(txtarea);
+      btn.appendChild(btntxt);
+      form.appendChild(btn);
+      notes_section.appendChild(form);
+      console.log(form);
+    </script>
+    <!-- Display notes -->
+
 
   </body>
   <br>

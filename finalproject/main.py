@@ -20,9 +20,18 @@ class Books(ndb.Model):
     date_published = ndb.DateTimeProperty()
     ISBN = ndb.IntegerProperty()
 
+
+class User(ndb.Model):
+    email = ndb.StringProperty()
+    user_key = users.get_current_user()
+    def url(self):
+        return '/user?key=' + self.key.urlsafe()
+
 class Note(ndb.Model):
     quote = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
+    book_id = ndb.StringProperty()
+    user_key = ndb.StringProperty()
 
     def url(self):
         return '/note?key=' + self.key.urlsafe()
@@ -65,15 +74,27 @@ class AdventureHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('adventure.html')
         self.response.out.write(template.render())
 
+class AustenHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('austen.html')
+        self.response.out.write(template.render())
+
+class ShakespeareHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('shakespeare.html')
+        self.response.out.write(template.render())
+
+class DickensHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('dickens.html')
+        self.response.out.write(template.render())
+
 class SciHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('sci.html')
         self.response.out.write(template.render())
 
 class HomeHandler(webapp2.RequestHandler):
-
-    # myscript = '<script>function blah = </script>'
-
     def get(self):
         user = users.get_current_user()
 
@@ -91,105 +112,20 @@ class HomeHandler(webapp2.RequestHandler):
             self.response.out.write(template.render() + template1.render(template_values))
             # self.redirect(login_url)
 
-class ResultsHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        template = jinja_environment.get_template('results.html')
-        if user:
-            email = user.email()
-            logout_url = users.CreateLogoutURL('/')
-            template1 = jinja_environment.get_template('sign-out.html')
-            template_values = {'email':email, 'logout_url':logout_url}
-            self.response.out.write(template.render() + template1.render(template_values))
-        else:
-            login_url = users.CreateLoginURL('/')
-            template1 = jinja_environment.get_template('sign-in.html')
-            template_values = {'login_url':login_url}
-            self.response.out.write(template.render() + template1.render(template_values))
-            # self.redirect(login_url)
-
 class BookHandler(webapp2.RequestHandler):
-    def get(self):
-        id = self.request.get('id')
-        template_values = {'id':id}
-        template= jinja_environment.get_template('book.html')
-        self.response.out.write(template.render(template_values))
-
-class ApiStuffHandler(webapp2.RequestHandler):
-    def get(self):
-        #url = "https://www.googleapis.com/books/v1/volumes?q=" + API_KEY
-        #results = urlfetch.fetch(url)
-
-        #result_dic = json.parse(result.content)
-        #logging.info(results_info(items))
-
-        #template_values = {}
-        template= jinja_environment.get_template('apistuff.html')
-        self.response.out.write(template.render())
-
-class PracticeHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        template= jinja_environment.get_template('practice.html')
-        self.response.out.write(template.render())
-
-class MyBooksHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        template = jinja_environment.get_template('mybooks.html')
-        if user:
-            email = user.email()
-            logout_url = users.CreateLogoutURL('/')
-            template1 = jinja_environment.get_template('sign-out.html')
-            template_values = {'email':email, 'logout_url':logout_url}
-            self.response.out.write(template.render() + template1.render(template_values))
-        else:
-            login_url = users.CreateLoginURL('/')
-            template1 = jinja_environment.get_template('sign-in.html')
-            template_values = {'login_url':login_url}
-            # self.response.out.write(template.render() + template1.render(template_values))
-            self.redirect(login_url)
-
-class AboutUsHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-
-        template = jinja_environment.get_template('aboutus.html')
-        if user:
-            email = user.email()
-            logout_url = users.CreateLogoutURL('/')
-
-            template1 = jinja_environment.get_template('sign-out.html')
-            template_values = {'email':email, 'logout_url':logout_url}
-            self.response.out.write(template.render() + template1.render(template_values))
-        else:
-            login_url = users.CreateLoginURL('/')
-            template1 = jinja_environment.get_template('sign-in.html')
-            template_values = {'login_url':login_url}
-            self.response.out.write(template.render(template_values) + template1.render(template_values))
-            # self.redirect(login_url)
-
-class NoteListHandler(webapp2.RequestHandler):
     # def get(self):
-    #     # 1. Get the info from the request.
-    #     # 2. Logic (interact w database)
-    #     notes = Note.query().fetch()
-    #
-    #     # 3. Render response
-    #     template = jinja_environment.get_template('notelist.html')
-    #     template_values = {'notes':notes}
-    #     self.response.write(template.render(template_values))
+
+    #     id = self.request.get('id')
+    #     template_values = {'id':id}
+    #     template= jinja_environment.get_template('book.html')
+    #     self.response.out.write(template.render(template_values))
     def get(self):
         user = users.get_current_user()
+        id = self.request.get('id')
+        notes = Note.query(ndb.AND(Note.book_id == id, Note.user_key == user.user_id())).fetch()
+        template_values = {'id':id, 'notes':notes}
 
-        notes = Note.query().fetch()
-        # 3. Render response
-        template = jinja_environment.get_template('notelist.html')
-        template_values = {'notes':notes}
-
+        template = jinja_environment.get_template('book.html')
         if user:
             email = user.email()
             logout_url = users.CreateLogoutURL('/')
@@ -199,20 +135,28 @@ class NoteListHandler(webapp2.RequestHandler):
         else:
             login_url = users.CreateLoginURL('/')
             template1 = jinja_environment.get_template('sign-in.html')
-            template_values1 = {'login_url':login_url}
-            # self.response.out.write(template.render(template_values) + template1.render(template_values1))
+            template_values = {'login_url':login_url}
+            # self.response.out.write(template.render() + template1.render(template_values))
             self.redirect(login_url)
 
     def post(self):
         # 1. Get the info from the request.
         quote = self.request.get('quote')
+        id = self.request.get('id')
+
+        user_key = users.get_current_user().user_id()
+        print "user_key"
+        print user_key
+        # # 2. Logic (interact w database)
+        # usr_key = ndb.Key(urlsafe=usr_key_urlsafe)
+        # usr = usr_key.get()
 
         # 2. Logic (interact w database)
-        note = Note(quote=quote)
+        note = Note(quote=quote, book_id = id, user_key = user_key)
         note.put()
 
         # 3. Render response
-        self.redirect('/notes')
+        self.redirect('/book?id=' + id)
 
 
 class NotesHandler(webapp2.RequestHandler):
@@ -273,6 +217,62 @@ class NotesHandler(webapp2.RequestHandler):
         self.redirect(note.url())
 
 
+class ApiStuffHandler(webapp2.RequestHandler):
+    def get(self):
+        #url = "https://www.googleapis.com/books/v1/volumes?q=" + API_KEY
+        #results = urlfetch.fetch(url)
+
+        #result_dic = json.parse(result.content)
+        #logging.info(results_info(items))
+
+        #template_values = {}
+        template= jinja_environment.get_template('apistuff.html')
+        self.response.out.write(template.render())
+
+class PracticeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template= jinja_environment.get_template('practice.html')
+        self.response.out.write(template.render())
+
+class MyBooksHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template = jinja_environment.get_template('mybooks.html')
+        if user:
+            email = user.email()
+            logout_url = users.CreateLogoutURL('/')
+            template1 = jinja_environment.get_template('sign-out.html')
+            template_values1 = {'email':email, 'logout_url':logout_url}
+            self.response.out.write(template.render() + template1.render(template_values1))
+        else:
+            login_url = users.CreateLoginURL('/')
+            template1 = jinja_environment.get_template('sign-in.html')
+            template_values = {'login_url':login_url}
+            # self.response.out.write(template.render() + template1.render(template_values))
+            self.redirect(login_url)
+
+class AboutUsHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        template = jinja_environment.get_template('aboutus.html')
+        if user:
+            email = user.email()
+            logout_url = users.CreateLogoutURL('/')
+
+            template1 = jinja_environment.get_template('sign-out.html')
+            template_values = {'email':email, 'logout_url':logout_url}
+            self.response.out.write(template.render() + template1.render(template_values))
+        else:
+            login_url = users.CreateLoginURL('/')
+            template1 = jinja_environment.get_template('sign-in.html')
+            template_values = {'login_url':login_url}
+            self.response.out.write(template.render(template_values) + template1.render(template_values))
+            # self.redirect(login_url)
+
 
 
 
@@ -310,16 +310,17 @@ class BreakOutHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/new', MainHandler),
     ('/', HomeHandler),
-    ('/results', ResultsHandler),
     ('/apistuff', ApiStuffHandler),
     ('/adventure', AdventureHandler),
     ('/sci', SciHandler),
+    ('/austen', AustenHandler),
+    ('/shakespeare', ShakespeareHandler),
+    ('/dickens', DickensHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
-    ('/notes', NoteListHandler),
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
+    ('/search', BreakOutHandler),
     ('/nopdf', NoPdfHandler),
-    ('/breakout', BreakOutHandler),
 ], debug=True)
