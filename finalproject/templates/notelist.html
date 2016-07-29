@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="./book.ico"/>
+  </head>
   </head>
   <body>
 
@@ -14,30 +16,20 @@
       </div>
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
-        <li><a href="/search" class="tablinks" >Results</a></li>
+        <li><a href="/search" class="tablinks" >Search</a></li>
+        <li class="dropdown">
+          <a href="/" class="tablinks">Home</a>
+          <div class="dropdown-content">
+            <a href="/adventure">Adventure</a>
+            <br>
+            <a href="/sci">Sci-Fy/Fantasy</a>
+          </div>
+        </li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
       </ul>
       <h2> Notes </h2>
-      <!-- <form id="newc" action="/notes" method="post">
-        <input name="book" placeholder="Book title goes here"><br>
-        <textarea name="quote" placeholder="Enter quote"></textarea><br>
-        <button>Add</button>
-        <br>
-      </form> -->
-      <!-- {% for note in notes %}
-        <div id="note">
-          <h3> {{note.book_title}} <h3>
-          <h2>
-            <a id="content" href="{{note.url()}}">
-              <section>{{note.quote}}</section>
-            </a>
-          </h2>
-
-          <div class="date">{{note.date}}</div>
-        </div>
-      {% endfor %} -->
     </div>
     <br>
   </body>

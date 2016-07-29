@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>Search Function</title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="./book.ico"/>
+  </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
     <script>
     $(document).ready(setup);
     function setup() {
@@ -40,9 +41,6 @@
         if(!info.authors){
           info.authors= "Unknown";
         }
-        if (!info.previewLink){
-          info.previewLink = "";
-        }
         if (!info.imageLinks){
           info.imageLinks=[];
         }
@@ -51,7 +49,7 @@
         var authors = info.authors;
         var thumbnail = info.imageLinks.thumbnail;
         var id = item.id;
-
+        console.log(item);
 
         results.append(
         $('<section class="indibook"><div class="bookimage"><a href="' + webLink + '" target="_blank"><img src="' + thumbnail + '"></a></div><div class="booktext"><a href=/book?id=' + id + ' target="_self"><h2>' + title + '</h2></a><h3>' + authors + '</h3></div></section>'));
@@ -69,10 +67,17 @@
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
         <li><a href="/search" class="tablinks" >Search</a></li>
+        <li class="dropdown">
+          <a href="/" class="tablinks">Home</a>
+          <div class="dropdown-content">
+            <a href="/adventure">Adventure</a>
+            <br>
+            <a href="/sci">Sci-Fy/Fantasy</a>
+          </div>
+        </li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
-        <li><a href="/signin" class="tablinks" >Sign-in</a></li>
       </ul>
       <br>
       <br>

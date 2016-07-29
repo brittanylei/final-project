@@ -50,6 +50,23 @@ class MainHandler(webapp2.RequestHandler):
         book_id = self.response.get('')
         template = jinja_environment.get_template('book.html')
         self.response.out.write(template.render(template_values))
+
+
+class NoPdfHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('nopdf.html')
+        self.response.out.write(template.render())
+
+class AdventureHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('adventure.html')
+        self.response.out.write(template.render())
+
+class SciHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('sci.html')
+        self.response.out.write(template.render())
+
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -296,11 +313,13 @@ app = webapp2.WSGIApplication([
     ('/new', MainHandler),
     ('/', HomeHandler),
     ('/apistuff', ApiStuffHandler),
+    ('/adventure', AdventureHandler),
+    ('/sci', SciHandler),
     ('/mybooks', MyBooksHandler),
     ('/aboutus', AboutUsHandler),
-    # ('/notes', NoteListHandler),
     ('/note', NotesHandler),
     ('/practice', PracticeHandler),
     ('/book', BookHandler),
-    ('/search', BreakOutHandler)
+    ('/search', BreakOutHandler),
+    ('/nopdf', NoPdfHandler)
 ], debug=True)

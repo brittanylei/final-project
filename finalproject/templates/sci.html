@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="./book.ico"/>
+
+  </head>
+  <body>
+    <div class = content>
+      <div id = heading>
+        <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />
+        <h1>The Chubby Cups - Sci-Fy/Fantasy</h1>
+      </div>
+      <ul class="tab">
+        <li class="dropdown">
+          <a href="/" class="tablinks">Home</a>
+          <div class="dropdown-content">
+            <a href="/adventure">Adventure</a>
+            <br>
+            <a href="/sci">Sci-Fy/Fantasy</a>
+          </div>
+        </li>
+        <li><a href="/breakout" class="tablinks" >Search</a></li>
+        <li><a href="/mybooks" class="tablinks" >My Books</a></li>
+        <li><a href="/aboutus" class="tablinks" >About Us</a></li>
+        <li><a href="/notes" class="tablinks" >Notes</a></li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+        <div class="carousel">
+      <a href="/book?id=d9EZAAAAYAAJ"><img class ="item a" src="https://jcodner.files.wordpress.com/2015/08/journey_to_the_center_of_the_earth___book_cover_by_twodeeweaver-d6okbn1.jpg"></a>
+      <a href="/book?id=svuXxq3SfpsC"><img class ="item b" src="http://classics-illustrated.com/ripvan/images/ripcoverweb.jpg"></a>
+      <a href="/book?id=c2c-AAAAYAAJ"><img class ="item c" src="https://www.penguin.com.au/jpg-large/9780451532251.jpg" ></a>
+      <a href="/book?id=f8ANAAAAQAAJ"><img class ="item d" src="http://www.pagepulp.com/wp-content/18.jpg"></a>
+      <a href="/book?id=k39vHp-5VeMC"><img class ="item e" src="http://covers.feedbooks.net/book/88.jpg?size=large&t=1439157381"></a>
+      <a href="/book?id=QKgVAAAAYAAJ"><img class ="item f" src="https://thebookswelove.files.wordpress.com/2015/11/o-frankenstein-facebook.jpg"></a>
+      <a href="/book?id=OTcmIoJPZ8cC"><img class ="item g" src="https://upload.wikimedia.org/wikipedia/en/f/f8/Phantom.jpg"></a>
+      <a href="/book?id=bOQ3IsWHXJEC"><img class ="item h" src="https://images-na.ssl-images-amazon.com/images/I/51CARXQDTVL.jpg"></a>
+      <a href="/book?id=vdAOAAAAIAAJ"><img class ="item i" src="http://d.gr-assets.com/books/1388639080l/17184.jpg"></a>
+    </div>
+    </div>
+    <div class="next"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+    <div class="prev"><img src="http://www.i2clipart.com/cliparts/2/b/7/3/clipart-old-style-arrow-2b73.png"></div>
+      <p>Welcome to The Chubby Cups. This is the science fiction and fantasy genre where you can find our featured books with exceptional sci-fy or fantasy elements. Scroll through the carousel and see for yourself which book speaks to you.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var carousel = $(".carousel"),
+  currdeg = 0;
+
+$(".next").on("click", {
+  d: "n"
+}, rotate);
+$(".prev").on("click", {
+  d: "p"
+}, rotate);
+
+function rotate(e) {
+  if (e.data.d == "n") {
+    currdeg = currdeg - 40;
+  }
+  if (e.data.d == "p") {
+    currdeg = currdeg + 40;
+  }
+  carousel.css({
+    "-webkit-transform": "rotateY(" + currdeg + "deg)",
+    "-moz-transform": "rotateY(" + currdeg + "deg)",
+    "-o-transform": "rotateY(" + currdeg + "deg)",
+    "transform": "rotateY(" + currdeg + "deg)"
+  });
+}
+</script>
+<!-- {{myscript}} -->
+  </div>
+  <br>
+  <br>
+    </div>
+    <br>
+    <!-- <input onclick=function/> -->
+  </body>
+  <br>
+  <br>
+  <div id ="wrapper">
+  <footer>
+
+  <p>This code is brought to you in part by the CSSI 2016 in MTV. Thanks to all the Google employees, interns, and TAs who made this site possible.</p>
+
+</footer>
+</div>
+</html>

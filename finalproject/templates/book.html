@@ -4,28 +4,29 @@
     <meta charset="utf-8">
     <title></title>
     <link href="stylesheets/books.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="./book.ico"/>
   </head>
   <body>
     <script type="text/javascript">
     var httpRequest = new XMLHttpRequest();
 
-    function nameOfTheFunction() {
+    function single_volume_callback() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        console.log(typeof(JSON.parse(httpRequest.responseText).items[0]));
-        var items = JSON.parse(httpRequest.responseText).items[0]; //going to iterate over the array of items, brings back the first book, which is the one we want
-        console.log(items);
+        console.log("The response text is " + httpRequest.responseText);
+        var items = JSON.parse(httpRequest.responseText); //going to iterate over the array of items, brings back the first book, which is the one we want
+        console.log("single_volume_callback are " + items);
 
-        //for (var i =0; i < items.length; i++) { //items is the list of books that are brought back from the search query. I
-          var item = items               //in this file, only one book is brought back. We use the variable item to represent the singular book
+          var item = items;               //in this file, only one book is brought back. We use the variable item to represent the singular book
           var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
-
+          var access = item.accessInfo;
           // This section of code fills properties that are nil with an empty value, such as an empty array or string //
           if(!v_inf.authors){
             v_inf.authors= "Unknown";
           }
-          if (!v_inf.previewLink){
-            v_inf.previewLink = "";
-          }
+
+          //if (!v_inf.previewLink){
+          //  v_inf.previewLink = "";
+          //}
           if (!v_inf.imageLinks){
             v_inf.imageLinks=[];
           }
@@ -38,15 +39,23 @@
           var date = v_inf.publishedDate;
           var language = v_inf.language;
           var authors = v_inf.authors;
+          var webLink = access.webReaderLink;
+          //webLink = webLink + target="_blank";
+          var thepdf = access.pdf;
+          var pdfLink = thepdf.downloadLink;
+          //pdfLink = pdfLink + target="_blank";
           //var description = v_inf.description;
+          if(!thepdf.downloadLink){
+            thepdf.downloadLink= "/nopdf";
+          }
           var id = item.id;
           var page_num = v_inf.pageCount;
           var type = v_inf.printType.toLowerCase();
           var image = v_inf.imageLinks.thumbnail;
 
           //section for the books information.
-          var header = document.createElement("h1"); // title + authors // title + authors
-          var header_text = document.createTextNode(title);
+          var header = document.createElement("h1"); // title + authors // title + authors   //div
+          var header_text = document.createTextNode(title);                                  // p and h
           header.appendChild(header_text);
 
           var header2 = document.createElement("h2"); // title + authors
@@ -69,14 +78,24 @@
           var desText = document.createTextNode("More info: " + type); // date + ISBN + page count + // date + ISBN + page count +
           des.appendChild(desText)
 
-          var read_link = document.createElement("a");
-          read_link.href = v_inf.previewLink; //find better web reader to use
-          link_text = document.createTextNode("Read Here"); //
-          read_link.appendChild(link_text);
+          var myLink = document.createElement("a");
+          //myLink.href = access.webReaderLink; //find better web reader to use
+          myLink.setAttribute("href", access.webReaderLink);
+          myLink.setAttribute("target", "_blank");
+          webLinks = document.createTextNode("Read in Web"); //
+          myLink.appendChild(webLinks);
+
+          var Link2 = document.createElement("a");
+          //myLink.href = access.webReaderLink; //find better web reader to use
+          Link2.setAttribute("href", thepdf.downloadLink);
+          pdfLinks = document.createTextNode("Download Pdf"); //
+          Link2.appendChild(pdfLinks);
 
           var picture = document.createElement("img")
           picture.src = image;
 
+          //This is where all the pieces of information are being appended to the page
+          //Section where everything is displayed
             specific_book_img.appendChild(picture);
             specific_book.appendChild(header);
             specific_book.appendChild(header2);
@@ -84,25 +103,26 @@
             //specific_book.appendChild(hard);
             //specific_book.appendChild(page);
             specific_book.appendChild(des);
-            specific_book.appendChild(read_link);
+            specific_book.appendChild(myLink);
+            specific_book.appendChild(Link2);
+
 
 
 
     //   else {
     // still not ready
     //       } ends else
-      //  }         // ends for loop
-      }           // ends if loop
+     }           // ends if loop
     }             // ends function
     var my_search = "{{id}}"; //this is will be the id at the top
-    var my_search_list = my_search.split(" "); //separates all the words in the user's search text
-    my_search = "";
-    for (var i = 0; i < my_search_list.length; i++){
-      my_search = my_search + '+' + my_search_list[i];
-    }
-    my_search = my_search + "&filter=free-ebooks";
-    httpRequest.onreadystatechange = nameOfTheFunction;
-    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + my_search, true);
+    // var my_search_list = my_search.split(" "); //separates all the words in the user's search text
+    // my_search = "";
+    // for (var i = 0; i < my_search_list.length; i++){
+    //   my_search = my_search + '+' + my_search_list[i];
+    // }
+  //  my_search = my_search + "&filter=free-ebooks";
+    httpRequest.onreadystatechange = single_volume_callback;
+    httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes/' + my_search, true);
     httpRequest.send(null);
 
     </script>
@@ -119,6 +139,14 @@
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
         <li><a href="/search" class="tablinks" >Search</a></li>
+        <li class="dropdown">
+          <a href="/" class="tablinks">Home</a>
+          <div class="dropdown-content">
+            <a href="/adventure">Adventure</a>
+            <br>
+            <a href="/sci">Sci-Fy/Fantasy</a>
+          </div>
+        </li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
@@ -127,6 +155,7 @@
       <div id="specific_book_img"></div>
       <div id = "specific_book"></div>
       <div id="notes_section"> </div>
+
     </div>
     <!-- <form action="/book" method="post">
       <input name="book" placeholder="Book title goes here"><br>
