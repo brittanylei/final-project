@@ -190,12 +190,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   width: 100%;
 }
 
-
-
-li.dropdown {
-    display: inline-block;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -217,6 +211,7 @@ li.dropdown {
     display: block;
 }
 
+.show {display:block;}
 
 .polaroid{
   border-width: medium;
@@ -234,7 +229,13 @@ li.dropdown {
 }
 
 #picture_joseph{
-  
+
+}
+
+.abouts h2{
+  color:#ffffb3;
+  font-size: 26px;
+  margin: 0px;
 }
 
 #results img {
