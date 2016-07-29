@@ -191,31 +191,33 @@
       FUNCTION single_volume_callback
 
     -->
-    <!-- This is for the notes (textbox, post) -->
-    <script id="notes">
-      var div1 = document.createElement("div");
-      var form = document.createElement("form");
+    {% if user %}
+      <!-- This is for the notes (textbox, post) -->
+      <script id="notes">
+        var div1 = document.createElement("div");
+        var form = document.createElement("form");
 
-      form.setAttribute("action", "/book?id=" + "{{id}}");
-      form.setAttribute("method", "post");
+        form.setAttribute("action", "/book?id=" + "{{id}}");
+        form.setAttribute("method", "post");
 
-      var txtarea = document.createElement("textarea");
-      txtarea.setAttribute("name", "quote");
-      txtarea.setAttribute("placeholder", "Enter quote");
+        var txtarea = document.createElement("textarea");
+        txtarea.setAttribute("name", "quote");
+        txtarea.setAttribute("placeholder", "Enter quote");
+
+        var btn = document.createElement("button");
+        var btntxt = document.createTextNode("Add");
 
 
-      var btn = document.createElement("button");
-      var btntxt = document.createTextNode("Add");
-
-
-      div1.appendChild(form);
-      form.appendChild(txtarea);
-      btn.appendChild(btntxt);
-      form.appendChild(btn);
-      notes_section.appendChild(form);
-      console.log(form);
-    </script>
+        div1.appendChild(form);
+        form.appendChild(txtarea);
+        btn.appendChild(btntxt);
+        form.appendChild(btn);
+        notes_section.appendChild(form);
+        console.log(form);
+      </script>
+    {% endif %}
     <!-- Display notes -->
+  }
 
 
   </body>

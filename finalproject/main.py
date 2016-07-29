@@ -122,11 +122,11 @@ class BookHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         id = self.request.get('id')
-        notes = Note.query(ndb.AND(Note.book_id == id, Note.user_key == user.user_id())).fetch()
-        template_values = {'id':id, 'notes':notes}
 
         template = jinja_environment.get_template('book.html')
         if user:
+            notes = Note.query(ndb.AND(Note.book_id == id, Note.user_key == user.user_id())).fetch()
+            template_values = {'id':id, 'notes':notes, 'user':user}
             email = user.email()
             logout_url = users.CreateLogoutURL('/')
             template1 = jinja_environment.get_template('sign-out.html')
@@ -136,8 +136,8 @@ class BookHandler(webapp2.RequestHandler):
             login_url = users.CreateLoginURL('/')
             template1 = jinja_environment.get_template('sign-in.html')
             template_values = {'login_url':login_url}
-            # self.response.out.write(template.render() + template1.render(template_values))
-            self.redirect(login_url)
+            self.response.out.write(template.render({'id':id}) + template1.render(template_values))
+            # self.redirect(login_url)
 
     def post(self):
         # 1. Get the info from the request.
@@ -145,8 +145,6 @@ class BookHandler(webapp2.RequestHandler):
         id = self.request.get('id')
 
         user_key = users.get_current_user().user_id()
-        print "user_key"
-        print user_key
         # # 2. Logic (interact w database)
         # usr_key = ndb.Key(urlsafe=usr_key_urlsafe)
         # usr = usr_key.get()
