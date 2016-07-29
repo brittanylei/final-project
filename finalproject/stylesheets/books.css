@@ -228,8 +228,35 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   transform: rotate(-2deg);
 }
 
-#picture_joseph{
+#picture_brittany:hover {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 5;
+}
 
+#picture_nicole:hover {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 5;
+}
+
+#picture_joseph:hover {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 5;
+}
+
+
+#picture_brittany{
+  transform: rotate(5deg);
+}
+
+#picture_nicole{
+  transform: rotate(-4deg);
+}
+
+#picture_joseph{
+  transform: rotate(5deg);
 }
 
 .abouts h2{
