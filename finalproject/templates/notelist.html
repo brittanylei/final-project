@@ -23,29 +23,15 @@
             <a href="/sci">Sci-Fy/Fantasy</a>
           </div>
         </li>
+<<<<<<< HEAD
         <li><a href="/breakout" class="tablinks" >Search</a></li>
+=======
+        <li><a href="/search" class="tablinks" >Search</a></li>
+>>>>>>> 90f2f07f31dd1784d29adacc53fbc762de64fc4f
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
-        <li><a href="/notes" class="tablinks" >Notes</a></li>
       </ul>
       <h2> Notes </h2>
-      <form id="newc" action="/notes" method="post">
-        <input name="book" placeholder="Book title goes here"><br>
-        <textarea name="quote" placeholder="Enter quote"></textarea><br>
-        <button>Add</button>
-        <br>
-      </form>
-      {% for note in notes %}
-        <div id="note">
-          <h2>
-            <a id="content" href="{{note.url()}}">
-              <section>{{note.quote}}</section>
-            </a>
-          </h2>
-
-          <div class="date">{{note.date}}</div>
-        </div>
-      {% endfor %}
     </div>
     <br>
   </body>
