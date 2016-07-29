@@ -203,6 +203,7 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
     text-decoration: none;
     display: block;
     text-align: left;
+    width: 80%;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
