@@ -246,50 +246,6 @@ class AboutUsHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(template_values) + template1.render(template_values))
             # self.redirect(login_url)
 
-# class NoteListHandler(webapp2.RequestHandler):
-#     # def get(self):
-#     #     # 1. Get the info from the request.
-#     #     # 2. Logic (interact w database)
-#     #     notes = Note.query().fetch()
-#     #
-#     #     # 3. Render response
-#     #     template = jinja_environment.get_template('notelist.html')
-#     #     template_values = {'notes':notes}
-#     #     self.response.write(template.render(template_values))
-#     def get(self):
-#         user = users.get_current_user()
-#
-#         urlsafe_key = self.request.get('key')
-#         notes = Note.query().fetch()
-#         # 3. Render response
-#         template = jinja_environment.get_template('notelist.html')
-#         template_values = {'notes':notes}
-#
-#         if user:
-#             email = user.email()
-#             logout_url = users.CreateLogoutURL('/')
-#             template1 = jinja_environment.get_template('sign-out.html')
-#             template_values1 = {'email':email, 'logout_url':logout_url}
-#             self.response.out.write(template.render(template_values) + template1.render(template_values1))
-#         else:
-#             login_url = users.CreateLoginURL('/')
-#             template1 = jinja_environment.get_template('sign-in.html')
-#             template_values1 = {'login_url':login_url}
-#             # self.response.out.write(template.render(template_values) + template1.render(template_values1))
-#             self.redirect(login_url)
-#
-#     def post(self):
-#         # 1. Get the info from the request.
-#         quote = self.request.get('quote')
-#
-#         # 2. Logic (interact w database)
-#         note = Note(quote=quote)
-#         note.put()
-#
-#         # 3. Render response
-#         url = self.request.url
-#         self.redirect(url)
-
 
 class BreakOutHandler(webapp2.RequestHandler):
     def get(self):
