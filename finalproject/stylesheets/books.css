@@ -162,16 +162,16 @@ ul.tab {
 
 /* Float the list items side by side */
 ul.tab li {float: left;}
+ul.tab li #searchimg{float: right;}
 
 /* Style the links inside the list items */
 ul.tab li a {
   display: inline-block;
   color: white;
-  text-shadow: 1px 1px 2px black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
   font-family: Palatino;
 }
 
