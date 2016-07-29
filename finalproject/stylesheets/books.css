@@ -1,35 +1,28 @@
 p{
   font-family: Palatino;
 }
-
 .content p{
   font-size: 20px;
 }
-
 #signout {
   position: absolute;
   top: 15px;
   left: 25px;
 }
-
 footer p{
   font-size: 16px;
 }
-
 html{
   width: 100%;
   overflow-x: hidden;
 }
-
 body {
   background-image: url("http://graphicdesignjunction.com/wp-content/uploads/2011/05/pattern-48.jpg");
   background-attachment: fixed;
 }
-
 #heading{
   background-image: url("http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg");
 }
-
 #heading img {
   height: auto;
   margin-bottom: -7px;
@@ -47,21 +40,16 @@ body {
    text-shadow: 2px 2px 4px black;
    font-size: 50px;
 }
-
 #bookpic .item{
   margin: 3px;
 }
-
 #bookpic .item img{
   display: block;
 }
-
 #specific_book_img img{
   margin-top: 3em;
   box-shadow: 10px 10px 5px black;
-
 }
-
 #specific_book h1{
   color: white;
   width: 600px;
@@ -71,7 +59,6 @@ body {
   margin-top: 0px;
   margin-bottom: 15px;
 }
-
 #specific_book h2{
   color: #ffffb3;
   width: 600px;
@@ -81,7 +68,6 @@ body {
   margin-top: 0px;
   margin-bottom: 15px;
 }
-
 #specific_book p{
   color: #ffffb3;
   width: 600px;
@@ -91,7 +77,6 @@ body {
   margin-top: 0px;
   margin-bottom: 15px;
 }
-
 #specific_book a{
   color: #ffffb3;
   width: 600px;
@@ -101,8 +86,6 @@ body {
   margin-top: 0px;
   margin-bottom: 15px;
 }
-
-
 #specific_book_img {
   display: inline-block;
   margin: 3em;
@@ -111,22 +94,17 @@ body {
 #specific_book {
   display: inline-block;
 }
-
 .genre h2{
   text-align: left;
 }
-
-
 .indibook {
   display: block;
   margin-bottom: 50px;
 }
-
 .content{
   background-color: #B28F4F;
   margin:5%;
 }
-
 .content p, h2{
   margin: 5%;
   padding-bottom: 3%;
@@ -134,12 +112,10 @@ body {
   color: white;
   text-shadow: 1px 1px 2px black;
 }
-
 #wrapper {
 min-height:100%;
 position:relative;
 }
-
 footer{
 display: block;
 background-color: white;
@@ -151,7 +127,6 @@ position:absolute;
 bottom:0;
 left:0;
 }
-
 ul.tab {
   list-style-type: none;
   margin: 0;
@@ -159,11 +134,7 @@ ul.tab {
   overflow: hidden;
   background-color: #644C37;
 }
-
-/* Float the list items side by side */
 ul.tab li {float: left;}
-
-/* Style the links inside the list items */
 ul.tab li a {
   display: inline-block;
   color: white;
@@ -173,14 +144,8 @@ ul.tab li a {
   font-size: 20px;
   font-family: Palatino;
 }
-
-/* Change background color of links on hover */
 ul.tab li a:hover {background-color: #503c2c;}
-
-/* Create an active/current tablink class */
 ul.tab li a:focus, .active {background-color: #836f5e;}
-
-/* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
@@ -188,14 +153,12 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   height: auto;
   width: 100%;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #644C37;
     min-width: 160px;
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -204,15 +167,11 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
     text-align: left;
     width: 82%;
 }
-
 .dropdown-content a:hover {background-color: #f1f1f1}
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .show {display:block;}
-
 .polaroid{
   border-width: medium;
   margin: 15px;
@@ -227,50 +186,40 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   border-bottom: 50px white solid;
   transform: rotate(-2deg);
 }
-
 #picture_brittany:hover {
   transform: scale(1.05);
   position: relative;
   z-index: 5;
 }
-
 #picture_nicole:hover {
   transform: scale(1.05);
   position: relative;
   z-index: 5;
 }
-
 #picture_joseph:hover {
   transform: scale(1.05);
   position: relative;
   z-index: 5;
 }
-
-
 #picture_brittany{
   transform: rotate(5deg);
 }
-
 #picture_nicole{
   transform: rotate(-4deg);
 }
-
 #picture_joseph{
   transform: rotate(5deg);
 }
-
 .abouts h2{
   color:#ffffb3;
   font-size: 26px;
   margin: 0px;
 }
-
 #results img {
   margin-left: 5em;
   font-family: Palatino;
   box-shadow: 10px 10px 5px black;
 }
-
 #results h2{
   color: white;
   margin-left: 50px;
@@ -285,7 +234,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   font-family: Palatino;
   text-shadow: 1px 1px 2px black;
 }
-
 #searchField{
   margin-left: 7em;
 
@@ -303,22 +251,16 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffee66;
 }
-
 .booktext{
   display: inline-block;
-
 }
 .bookimage {
   display: inline-block;
 }
-
-
 .indibook {
   display: block;
   margin-bottom: 50px;
 }
-
-
 .container {
   margin: 0 auto;
   width: 200px;
@@ -326,7 +268,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   position: relative;
   perspective: 1000px;
 }
-
 .carousel {
   height: 100%;
   width: 100%;
@@ -334,7 +275,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-
 .item {
   display: block;
   position: absolute;
@@ -346,7 +286,6 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
   opacity: 0.95;
   border-radius: 10px;
 }
-
 .a {
   transform: rotateY(0deg) translateZ(250px);
 }
@@ -365,19 +304,15 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 .f {
   transform: rotateY(200deg) translateZ(250px);
 }
-
 .g {
   transform: rotateY(240deg) translateZ(250px);
 }
-
 .h {
   transform: rotateY(280deg) translateZ(250px);
 }
-
 .i {
   transform: rotateY(320deg) translateZ(250px);
 }
-
 .next, .prev {
   /*color: #444;*/
   position: absolute;
@@ -396,12 +331,21 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
 }
 .next { right: 5em; }
 .prev { left: 5em; }
-
 em {
   color: white;
   margin-left: 25px;
 }
-
 #content {
   text-decoration: none;
+}
+#note {
+  border: 8px white solid;
+  border-radius: 3px;
+  margin: 5px;
+  max-width: 400px;
+}
+#notecontent{
+ color: white;
+ min-height: 30px;
+ border-radius: 3px;
 }

@@ -115,7 +115,7 @@
     // still not ready
     //       } ends else
      }           // ends if loop
-    }             // ends function
+    }          // ends function
     var my_search = "{{id}}"; //this is will be the id at the top
     // var my_search_list = my_search.split(" "); //separates all the words in the user's search text
     // my_search = "";
@@ -171,9 +171,9 @@
     <!-- Section for displaying user AND book specific notes -->
     {% for note in notes %}
       <div id="note">
-        <h3> {{note.book_title}} <h3>
+        <h3> {{note.book_title}} </h3>
         <h2>
-          <a id="content" href="{{note.url()}}">
+          <a id="notecontent" href="{{note.url()}}">
             <section>{{note.quote}}</section>
           </a>
         </h2>
