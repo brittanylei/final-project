@@ -162,7 +162,6 @@ ul.tab {
 
 /* Float the list items side by side */
 ul.tab li {float: left;}
-ul.tab li #searchimg{float: right;}
 
 /* Style the links inside the list items */
 ul.tab li a {
@@ -203,7 +202,7 @@ ul.tab li a:focus, .active {background-color: #836f5e;}
     text-decoration: none;
     display: block;
     text-align: left;
-    width: 80%;
+    width: 82%;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
