@@ -8,7 +8,121 @@
   </head>
   </head>
   <body>
+<!--
+      <script type="text/javascript">
+      var httpRequest = new XMLHttpRequest();
 
+      function single_volume_callback() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          console.log("The response text is " + httpRequest.responseText);
+          var items = JSON.parse(httpRequest.responseText); //going to iterate over the array of items, brings back the first book, which is the one we want
+          console.log("single_volume_callback are " + items);
+
+            var item = items;               //in this file, only one book is brought back. We use the variable item to represent the singular book
+            var v_inf = item.volumeInfo;      // volumeInfo (abbreviated v_inf) is a dictionary with many properties such as publishedDate, title, etc. Create a new variable v_inf to save space
+            var access = item.accessInfo;
+            // This section of code fills properties that are nil with an empty value, such as an empty array or string //
+            if(!v_inf.authors){
+              v_inf.authors= "Unknown";
+            }
+
+            //if (!v_inf.previewLink){
+            //  v_inf.previewLink = "";
+            //}
+            if (!v_inf.imageLinks){
+              v_inf.imageLinks=[];
+            }
+            if (!v_inf.pageCount){
+              v_inf.pageCount = "?";
+            }
+            //
+
+            var title =v_inf.title;
+            var date = v_inf.publishedDate;
+            var language = v_inf.language;
+            var authors = v_inf.authors;
+            var webLink = access.webReaderLink;
+            //webLink = webLink + target="_blank";
+            var thepdf = access.pdf;
+            var pdfLink = thepdf.downloadLink;
+            //pdfLink = pdfLink + target="_blank";
+            //var description = v_inf.description;
+            if(!thepdf.downloadLink){
+              thepdf.downloadLink= "/nopdf";
+            }
+            var id = item.id;
+            var page_num = v_inf.pageCount;
+            var type = v_inf.printType.toLowerCase();
+            var image = v_inf.imageLinks.thumbnail;
+
+            //section for the books information.
+            var header = document.createElement("h1"); // title + authors // title + authors   //div
+            var header_text = document.createTextNode(title);                                  // p and h
+            header.appendChild(header_text);
+
+            var header2 = document.createElement("h2"); // title + authors
+            var header2_text = document.createTextNode(" written by " + authors);
+            header2.appendChild(header2_text);
+
+            var pubs = document.createElement("p");
+            var pubsText = document.createTextNode("Published: " + date+ ", " + page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+            pubs.appendChild(pubsText)
+
+            //var hard = document.createElement("p");
+            //var hardText = document.createTextNode(hard_cover_id); // date + ISBN + page count + // date + ISBN + page count +
+            //hard.appendChild(hardText)
+
+            var page = document.createElement("p");
+            var pageText = document.createTextNode(page_num + " pages"); // date + ISBN + page count + // date + ISBN + page count +
+            page.appendChild(pageText)
+
+            var des = document.createElement("p");
+            var desText = document.createTextNode("More info: " + type); // date + ISBN + page count + // date + ISBN + page count +
+            des.appendChild(desText)
+
+            var myLink = document.createElement("a");
+            //myLink.href = access.webReaderLink; //find better web reader to use
+            myLink.setAttribute("href", access.webReaderLink);
+            myLink.setAttribute("target", "_blank");
+            webLinks = document.createTextNode("Read in Web"); //
+            myLink.appendChild(webLinks);
+
+            var Link2 = document.createElement("a");
+            //myLink.href = access.webReaderLink; //find better web reader to use
+            Link2.setAttribute("href", thepdf.downloadLink);
+            pdfLinks = document.createTextNode("Download Pdf"); //
+            Link2.appendChild(pdfLinks);
+
+            var picture = document.createElement("img")
+            picture.src = image;
+
+            //This is where all the pieces of information are being appended to the page
+            //Section where everything is displayed
+              specific_book_img.appendChild(picture);
+              specific_book.appendChild(header);
+              specific_book.appendChild(header2);
+              specific_book.appendChild(pubs);
+              //specific_book.appendChild(hard);
+              //specific_book.appendChild(page);
+              specific_book.appendChild(des);
+              specific_book.appendChild(myLink);
+              specific_book.appendChild(Link2);
+
+
+
+
+      //   else {
+      // still not ready
+      //       } ends else
+       }           // ends if loop
+      }             // ends function
+  //THIS WILL ITERATE OVER THE USER'S LIST OF BOOKS    {% for book in books %}
+      var my_search = "{{id}}"; //this is will be the id at the top
+      httpRequest.onreadystatechange = single_volume_callback;
+      httpRequest.open('GET', 'https://www.googleapis.com/books/v1/volumes/' + my_search, true);
+      httpRequest.send(null);
+    //  {% endfor %}
+      </script> -->
     <div class = content>
       <div id = heading>
         <img onload="this.style.opacity='1';" src="http://www.alwaysjkrowling.com/wp-content/uploads/2014/12/JKRHeader.jpg" />

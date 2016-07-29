@@ -9,6 +9,9 @@ from google.appengine.api import users
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
 
+# class User(ndb.Model):
+#     user_id = ndb.StringProperty()
+
 class Books(ndb.Model):
     name = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -29,6 +32,8 @@ class Comment(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     note_key = ndb.KeyProperty(kind=Note)
 
+# class BookList(ndb.Model):
+#
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('new.html')
@@ -269,6 +274,9 @@ class NotesHandler(webapp2.RequestHandler):
 
 
 
+
+
+
 class BreakOutHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -286,6 +294,18 @@ class BreakOutHandler(webapp2.RequestHandler):
             template_values = {'login_url':login_url}
             self.response.out.write(template.render(template_values) + template1.render(template_values))
             # self.redirect(login_url)
+
+        # users = User.query().fetch()
+        # user_email = self.request.get('email')
+        # if (user not in users):
+        #     new_user = User(user_id=user_email)
+        #     new_user.put()
+        #     print "New user alert!!"
+        # else:
+        #     print "This is a user already"
+
+
+
 
 app = webapp2.WSGIApplication([
     ('/new', MainHandler),
