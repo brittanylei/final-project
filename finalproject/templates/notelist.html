@@ -14,20 +14,21 @@
       </div>
       <ul class="tab">
         <li><a href="/" class="tablinks" >Home</a></li>
-        <li><a href="/results" class="tablinks" >Results</a></li>
+        <li><a href="/search" class="tablinks" >Results</a></li>
         <li><a href="/mybooks" class="tablinks" >My Books</a></li>
         <li><a href="/aboutus" class="tablinks" >About Us</a></li>
         <li><a href="/notes" class="tablinks" >Notes</a></li>
       </ul>
       <h2> Notes </h2>
-      <form id="newc" action="/notes" method="post">
+      <!-- <form id="newc" action="/notes" method="post">
         <input name="book" placeholder="Book title goes here"><br>
         <textarea name="quote" placeholder="Enter quote"></textarea><br>
         <button>Add</button>
         <br>
-      </form>
-      {% for note in notes %}
+      </form> -->
+      <!-- {% for note in notes %}
         <div id="note">
+          <h3> {{note.book_title}} <h3>
           <h2>
             <a id="content" href="{{note.url()}}">
               <section>{{note.quote}}</section>
@@ -36,7 +37,7 @@
 
           <div class="date">{{note.date}}</div>
         </div>
-      {% endfor %}
+      {% endfor %} -->
     </div>
     <br>
   </body>
